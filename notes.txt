@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/5190758/correct-way-to-use-mysql-database-in-multiple-php-files
