@@ -1,1 +1,3 @@
 http://stackoverflow.com/questions/5190758/correct-way-to-use-mysql-database-in-multiple-php-files
+
+what class should things like addpost() and deletepost() methods be in? How should the class structure be?
