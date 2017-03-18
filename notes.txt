@@ -1,3 +1,7 @@
+******* DON'T DELETE ANY OF THESE NOTES *******
+******* DON'T DELETE ANY OF THESE NOTES *******
+******* DON'T DELETE ANY OF THESE NOTES *******
+
 http://stackoverflow.com/questions/5190758/correct-way-to-use-mysql-database-in-multiple-php-files
 
 what class should things like addpost() and deletepost() methods be in? How should the class structure be?
@@ -9,3 +13,15 @@ post
 db
 person
 and another one to have methods like addPost and deletePost?
+
+error handling - check with classes not loading etc - document all of this
+
+max limit on post (8000) and all other entry sizes
+
+email confirmation - legit email address
+
+error reporting - don't show?
+
+I HAVEN'T INCLUDED DB CONFIG FILE IN GIT OR AUTO UPLOAD B/C IT CONTAINS PASSWORD
+
+http://stackoverflow.com/questions/27787607/method-not-found-in-class
