@@ -20,4 +20,4 @@ $content = '4';
 $post = new Post($userID, $lang, $password, $description, $content);
 CS::addPost($post);
 
-CS::getPost('4g6');
+print_r(CS::getPost('4g6'));

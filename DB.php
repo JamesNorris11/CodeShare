@@ -40,12 +40,29 @@ class DB
                       . $post->getContent() .
                       "')";
         $this->dbCon->query($SQL);
-        echo $SQL;
+
+        //@TODO ADD ERROR CHECKING HERE FOR IF SQL INSERT DOESN'T WORK - AND SAME FOR ALL OTHER SQL STATEMENTS
     }
 
     public function selectPost($ID)
     {
-        return '';
+        $SQL = "SELECT * FROM $this->table WHERE ID='$ID'";
+        $result = $this->dbCon->query($SQL);
+
+        //@TODO ADD ERROR CHECKING FOR IF NO SQL RESULT FDOUND - FOR ALL OTHER SQL STATEMENTS TOO
+        $row = mysqli_fetch_assoc($result);
+
+        $post = new Post(
+            $row['UserID'],
+            $row['Language'],
+            $row['Password'],
+            $row['Description'],
+            $row['Content'],
+            $row['DateTime'],
+            $row['ID']
+        );
+
+        return $post;
     }
 
     public function setTable($T)

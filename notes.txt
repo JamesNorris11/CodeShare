@@ -25,3 +25,8 @@ error reporting - don't show?
 I HAVEN'T INCLUDED DB CONFIG FILE IN GIT OR AUTO UPLOAD B/C IT CONTAINS PASSWORD
 
 http://stackoverflow.com/questions/27787607/method-not-found-in-class
+
+
+@TODO Make SQL statements secure - mysqli? PDO?
+
+check IDs don't already exist for both post and user when inserting

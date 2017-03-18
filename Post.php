@@ -40,9 +40,37 @@ class Post
         }
     }
 
+    public function setID($ID) {
+        $this->ID = $ID;
+    }
+
+    public function setUserID($userID) {
+        $this->userID = $userID;
+    }
+
+    public function setDateTime($dateTime) {
+        $this->dateTime = $dateTime;
+    }
+
+    public function setLanguage($language) {
+        $this->language = $language;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+    public function setContent($content) {
+        $this->content = $content;
+    }
+
     public function getID() {
     return $this->ID;
-}
+    }
 
     public function getUserID() {
         return $this->userID;
@@ -68,7 +96,7 @@ class Post
         return $this->content;
     }
 
-    public function createID() {
+    private function createID() {
         return '4g6';
     }
 }
