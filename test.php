@@ -6,15 +6,18 @@
  * Time: 15:22
  */
 
-require_once('cs.php');
+require_once('CS.php');
+require_once('Post.php');
 
 echo 'socks';
 
-$user = 'J';
+$userID = 'Jds3f';
 $lang = '1';
-$password = '2';
+$password = '20';
 $description = '3';
 $content = '4';
 
-$post = new post($user, $lang, $password, $description, $content);
-cs:addPost($post);
+$post = new Post($userID, $lang, $password, $description, $content);
+CS::addPost($post);
+
+CS::getPost('4g6');

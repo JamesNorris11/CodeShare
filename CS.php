@@ -7,24 +7,22 @@
  * Date: 10/03/2017
  * Time: 17:38
  */
-require_once('db.php');
+require_once('DB.php');
 
-class cs
+class CS
 {
     public static function addPost($post)
     {
         // @TODO DO I NEED TO HAVE THIS LINE AGAIN? WHEN DO I NEED new db()??
-        $db = new db('Posts');
-        // @TODO Get Current time and date
-        $dateTime = 5;
-        $post->setDateTime($dateTime);
-        $db->insertPost($post);
+        $DB = new DB('Posts');
+        $DB->insertPost($post);
     }
 
-    public static function getPost($id)
+    public static function getPost($ID)
     {
         // @TODO DO I NEED TO HAVE THIS LINE AGAIN? WHEN DO I NEED new db()??
-        $db = new db('Posts');
-        $postInfo = $db->selectPost($id);
+        $DB = new DB('Posts');
+        // @TODO should return a post class variable?
+        return $DB->selectPost($ID);
     }
 }
