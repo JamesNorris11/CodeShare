@@ -6,12 +6,20 @@
  * Time: 15:02
  *
  * @ included methods:
+ *
+ * __construct()
+ * __destruct()
+ *
  *  insertPost()
  *  selectPost()
  *  insertUser()
  *  selectUser()
  *  selectDisplayNameExists()
  *  selectUserPosts()
+ *  selectTotalPostsOrUsers
+ *
+ *  selectTable()
+ *  connect()
  */
 require_once('../../db-codeshare/dbConfig.php');
 

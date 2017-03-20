@@ -1,3 +1,27 @@
 body {
-    
+    margin: 0;
+}
+
+#banner {
+    height: 100px;
+    width: 100%;
+    border-bottom: thin solid #E25D34;
+    background-color: #282827;
+}
+.bannerlink {
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 50px;
+    color: white;
+
+    position: fixed;
+    padding-top: 15px;
+
+    border-radius: 25px;
+    border: 2px solid #E25D33;
+
+    padding: 1px 9px;
+    margin-top: 16px;
+    margin-left: 10px;
+
+    text-decoration: none;
 }

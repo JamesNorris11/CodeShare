@@ -7,12 +7,18 @@
  */
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
    <head>
-      <title>CodeShare</title>
-      <link rel="stylesheet" type="text/css" href="/css/style.css">
+       <title>CodeShare</title>
+       <meta name="description" content="CodeShare">
+       <meta name="author" content="JN">
+
+       <link rel="stylesheet" href="css/style.css">
    </head>
    <body>
-      <P>Hello world!
+   <header id="banner">
+       <a class="bannerlink" href="">CodeShare</a>
+   </header>
+   <script src="js/script.js"></script>
    </body>
 </html>
