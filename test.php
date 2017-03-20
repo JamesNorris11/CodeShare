@@ -38,14 +38,29 @@ $email = 'lol@ok.com';
 $password = '30';
 $displayName = "are you sure?";
 
+if (CS::displayNameExists($displayName) == true) {
+    // need new display name
+    echo "Display name already taken<br>";
+    $displayName = rand();
+}
+
 $newUser = new User($email, $password, $displayName);
 CS::addUser($newUser);
 
 $user = CS::getUser('5f07df43d');
 
 if ($user == null) {
-    print "Not Found";
+    print 'Not Found';
 }
 else {
     print_r($user);
 }
+
+echo "<br><br><br>";
+
+print_r(CS::getUserPosts('Jds3f'));
+
+echo "<br><br><br>";
+
+echo CS::getStats('Jds3f')['users'] . " aaa ";
+echo CS::getStats('Jds3f')['posts'];

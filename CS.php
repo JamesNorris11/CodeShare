@@ -18,11 +18,11 @@ class CS
         $DB->insertPost($post);
     }
 
-    public static function getPost($ID)
+    public static function getPost($postID)
     {
         // @TODO DO I NEED TO HAVE THIS LINE AGAIN? WHEN DO I NEED new db()?? Could make non static and have class variable of $DB?
         $DB = new DB('Posts');
-        return $DB->selectPost($ID);
+        return $DB->selectPost($postID);
     }
 
     public static function addUser($user)
@@ -31,9 +31,38 @@ class CS
         $DB->insertUser($user);
     }
 
-    public static function getUser($ID)
+    public static function getUser($userID)
     {
         $DB = new DB('Users');
-        return $DB->selectUser($ID);
+        return $DB->selectUser($userID);
+    }
+
+    // @return true or false
+    public static function displayNameExists($displayName) {
+        $DB = new DB('Users');
+        return $DB->selectDisplayNameExists($displayName);
+    }
+
+    // @return array of Post objects
+    public static function getUserPosts($userID)
+    {
+        $DB = new DB('Posts');
+        return $DB->selectUserPosts($userID);
+    }
+
+    // @return array with two elements [Posts => #, Users => #]
+    public static function getStats()
+    {
+        $stats = [];
+        $DB = new DB('Posts');
+        $stats['posts'] = $DB->selectTotalPostsOrUsers();
+        $DB->setTable("Users");
+        $stats['users'] = $DB->selectTotalPostsOrUsers();
+        return $stats;
+    }
+
+    public static function registerUser() {
+        // @TODO maybe methods should be more overall like this - and then things like addUser in DB or somewhere else?
+        // this function would then do other stuff as well as calling addUser() method
     }
 }

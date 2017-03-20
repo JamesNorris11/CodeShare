@@ -4,6 +4,14 @@
  * Created by James Norris.
  * Date: 10/03/2017
  * Time: 15:02
+ *
+ * @ included methods:
+ *  insertPost()
+ *  selectPost()
+ *  insertUser()
+ *  selectUser()
+ *  selectDisplayNameExists()
+ *  selectUserPosts()
  */
 require_once('../../db-codeshare/dbConfig.php');
 
@@ -153,6 +161,82 @@ class DB
             echo 'Error: ' . $E->getMessage();
         }
     }
+
+    // @return true or false if display name already exists
+    public function selectDisplayNameExists($displayName)
+    {
+        try {
+            // prepare sql and bind parameters
+            $stmt = $this->dbCon->prepare("SELECT * FROM $this->table WHERE DisplayName = :DisplayName");
+            $stmt->bindParam(':DisplayName', $displayName);
+            $stmt->execute();
+
+            $row = $stmt->fetch();
+
+            if ($stmt->rowCount() == 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
+
+    // @return array of Post type objects if found, null if no result found
+    public function selectUserPosts($userID)
+    {
+        try {
+            // prepare sql and bind parameters
+            $stmt = $this->dbCon->prepare("SELECT * FROM $this->table WHERE UserID = :UserID");
+            $stmt->bindParam(':UserID', $userID);
+            $stmt->execute();
+
+            if ($stmt->rowCount() == 0) {
+                return null;
+            }
+            else {
+                $posts = [];
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $post = new Post(
+                        $row['UserID'],
+                        $row['Language'],
+                        $row['Password'],
+                        $row['Description'],
+                        $row['Content'],
+                        $row['PostDate'],
+                        $row['PostID']
+                    );
+                    array_push($posts, $post);
+                }
+                return $posts;
+            }
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
+
+    public function selectTotalPostsOrUsers()
+    {
+        try {
+            $stmt = $this->dbCon->prepare("SELECT * FROM $this->table");
+            $stmt->execute();
+
+            return $stmt->rowCount();
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
+
+
 
     public function setTable($T)
     {
