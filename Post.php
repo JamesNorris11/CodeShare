@@ -8,15 +8,15 @@
  */
 class Post
 {
-    private $ID;
+    private $postID;
     private $userID;
-    private $dateTime;
+    private $postDate;
     private $language;
     private $password;
     private $description;
     private $content;
 
-    public function __construct($userID, $lang, $password, $description, $content, $dateTime = null, $ID = null)
+    public function __construct($userID, $lang, $password, $description, $content, $postDate = null, $postID = null)
     {
         $this->userID = $userID;
         $this->language = $lang;
@@ -24,32 +24,32 @@ class Post
         $this->description = $description;
         $this->content = $content;
 
-        if ($dateTime != null) {
-            $this->dateTime = $dateTime;
+        if ($postDate != null) {
+            $this->postDate = $postDate;
         }
         else {
-            // @TODO use datetime function
-            $this->dateTime = '5';
+            // time() gives seconds since epoch of 00:00 1/1/1970
+            $this->postDate = time();
         }
 
-        if ($ID != null) {
-            $this->ID = $ID;
+        if ($postID != null) {
+            $this->postID = $postID;
         }
         else {
-            $this->ID = $this->createID();
+            $this->postID = $this->createID();
         }
     }
 
-    public function setID($ID) {
-        $this->ID = $ID;
+    public function setPostID($postID) {
+        $this->postID = $postID;
     }
 
     public function setUserID($userID) {
         $this->userID = $userID;
     }
 
-    public function setDateTime($dateTime) {
-        $this->dateTime = $dateTime;
+    public function setPostDate($postDate) {
+        $this->postDate = $postDate;
     }
 
     public function setLanguage($language) {
@@ -68,16 +68,16 @@ class Post
         $this->content = $content;
     }
 
-    public function getID() {
-    return $this->ID;
+    public function getPostID() {
+    return $this->postID;
     }
 
     public function getUserID() {
         return $this->userID;
     }
 
-    public function getDateTime() {
-        return $this->dateTime;
+    public function getPostDate() {
+        return $this->postDate;
     }
 
     public function getLanguage() {
@@ -97,6 +97,6 @@ class Post
     }
 
     private function createID() {
-        return '4g6';
+        return substr(md5(rand()), 0, 9);
     }
 }

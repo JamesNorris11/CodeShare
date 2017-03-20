@@ -13,16 +13,27 @@ class CS
 {
     public static function addPost($post)
     {
-        // @TODO DO I NEED TO HAVE THIS LINE AGAIN? WHEN DO I NEED new db()??
+        // @TODO DO I NEED TO HAVE THIS LINE AGAIN? WHEN DO I NEED new db()?? Could make non static and have class variable of $DB?
         $DB = new DB('Posts');
         $DB->insertPost($post);
     }
 
     public static function getPost($ID)
     {
-        // @TODO DO I NEED TO HAVE THIS LINE AGAIN? WHEN DO I NEED new db()??
+        // @TODO DO I NEED TO HAVE THIS LINE AGAIN? WHEN DO I NEED new db()?? Could make non static and have class variable of $DB?
         $DB = new DB('Posts');
-        // @TODO should return a post class variable?
         return $DB->selectPost($ID);
+    }
+
+    public static function addUser($user)
+    {
+        $DB = new DB('Users');
+        $DB->insertUser($user);
+    }
+
+    public static function getUser($ID)
+    {
+        $DB = new DB('Users');
+        return $DB->selectUser($ID);
     }
 }
