@@ -1,27 +1,183 @@
+html {
+    height: 100%;
+}
+
 body {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
+    height: 100%;
     margin: 0;
 }
 
-#banner {
+header {
+    background-color: rgba(40, 40, 39, 0.85);
+
+    border-bottom: 3px solid #E25D34;
+
     height: 100px;
     width: 100%;
-    border-bottom: thin solid #E25D34;
-    background-color: #282827;
+    position: relative;
+    /* This means border is included in 10.87% height so that can use percentages */
+    box-sizing: border-box;
 }
-.bannerlink {
+
+#bannerLink {
     font-family: Impact, Charcoal, sans-serif;
     font-size: 50px;
     color: white;
-
-    position: fixed;
-    padding-top: 15px;
+    text-decoration: none;
 
     border-radius: 25px;
-    border: 2px solid #E25D33;
+    border: 3px solid #E25D33;
 
+    position: absolute;
     padding: 1px 9px;
     margin-top: 16px;
     margin-left: 10px;
+}
 
+.dots {
+    color: #E25D33;
+}
+
+#navList {
+    list-style-type: none;
+
+    margin-bottom: 0px;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.navButton {
+    float: left;
+}
+
+.navButton a {
+    color: white;
     text-decoration: none;
+
+    background-color: #E25D33;
+
+    padding: 8px 13px 9px 13px;
+    margin-right: 9px;
+
+    display: block;
+}
+
+.navButton a:hover {
+    background-color: #9e4022;
+}
+
+#active {
+    background-color: #9e4022;
+}
+
+main {
+    height: calc(100% - 100px);
+    width: 100%;
+
+    position: relative;
+}
+
+aside {
+    background-color: rgb(230, 230, 230);
+
+    border-right: thin solid #E25D33;
+    box-sizing: border-box;
+
+    height: 100%;
+    width: 180px;
+    bottom: 0;
+    padding: 63px 20px 0px 19px;
+
+    float: left;
+    position: absolute;
+}
+
+.stats {
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+.title {
+    margin-bottom: 4px;
+}
+
+#noteBookImage {
+    margin-top: 40px;
+}
+
+.number {
+    color: #E25D33;
+
+    margin-bottom: 16px;
+}
+
+section {
+    float: right;
+    position: absolute;
+
+    margin-left: 180px;
+    height: 100%;
+    width: calc(100% - 180px);
+}
+
+#addPostForm {
+    font-size: 15px;
+
+    width: 90%;
+    height: calc(100% - 200px);
+    margin-top: 36px;
+    margin-left: 36px;
+}
+
+.textarea {
+    background-color: rgb(230, 230, 230);
+    border: thin solid #E25D33;
+
+    width: 100%;
+}
+
+#main {
+    height: 95%;
+    min-height: 80px;
+    margin-bottom: 5px;
+}
+
+#description {
+    height: 40px;
+    margin-bottom: 11px;
+}
+
+.input {
+    background-color: rgb(230, 230, 230);
+    border: thin solid #E25D33;
+}
+
+#password {
+    width: 115px;
+}
+
+#security {
+    width: 60px;
+}
+
+#submit {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+
+    background-color: #E25D33;
+    border: none;
+    cursor: pointer;
+
+    padding: 10px 20px;
+    float: right;
+}
+
+#submit:hover {
+    background-color: #9e4022;
 }
