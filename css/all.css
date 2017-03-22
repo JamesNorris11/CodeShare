@@ -96,24 +96,8 @@ aside {
     position: absolute;
 }
 
-.stats {
-    font-weight: bold;
-    text-align: center;
-    display: block;
-}
-
-.title {
-    margin-bottom: 4px;
-}
-
 #noteBookImage {
     margin-top: 40px;
-}
-
-.number {
-    color: #E25D33;
-
-    margin-bottom: 16px;
 }
 
 section {
@@ -125,44 +109,9 @@ section {
     width: calc(100% - 180px);
 }
 
-#addPostForm {
-    font-size: 15px;
-
-    width: 90%;
-    height: calc(100% - 200px);
-    margin-top: 36px;
-    margin-left: 36px;
-}
-
-.textarea {
-    background-color: rgb(230, 230, 230);
-    border: thin solid #E25D33;
-
-    width: 100%;
-}
-
-#main {
-    height: 95%;
-    min-height: 80px;
-    margin-bottom: 5px;
-}
-
-#description {
-    height: 40px;
-    margin-bottom: 11px;
-}
-
 .input {
     background-color: rgb(230, 230, 230);
     border: thin solid #E25D33;
-}
-
-#password {
-    width: 115px;
-}
-
-#security {
-    width: 60px;
 }
 
 #submit {
@@ -180,4 +129,34 @@ section {
 
 #submit:hover {
     background-color: #9e4022;
+}
+
+.titlePhrase {
+    font-size: 36px;
+    text-align: center;
+
+    display: block;
+    margin-bottom: 20px;
+}
+
+.formContainer {
+    text-align: center;
+
+    display: block;
+}
+
+.detailsForm {
+    font-size: 15px;
+    text-align: center;
+
+    height: calc(100% - 200px);
+    margin: 40px auto 0 auto;
+}
+
+.field {
+    width: 175px;
+}
+
+label {
+
 }

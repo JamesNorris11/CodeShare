@@ -1,0 +1,50 @@
+.stats {
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+.title {
+    margin-bottom: 4px;
+}
+
+.number {
+    color: #E25D33;
+
+    margin-bottom: 16px;
+}
+
+#addPostForm {
+    font-size: 15px;
+
+    width: 90%;
+    height: calc(100% - 200px);
+    margin-top: 36px;
+    margin-left: 36px;
+}
+
+.textarea {
+    background-color: rgb(230, 230, 230);
+    border: thin solid #E25D33;
+
+    width: 100%;
+}
+
+#content {
+    height: 95%;
+    min-height: 80px;
+    margin-bottom: 5px;
+}
+
+#description {
+    height: 40px;
+    margin-bottom: 11px;
+}
+
+#password {
+    width: 115px;
+}
+
+#security {
+    width: 60px;
+}

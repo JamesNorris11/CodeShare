@@ -1,13 +1,3 @@
-#loginForm {
-    font-size: 15px;
-
-    width: 50%;
-    height: calc(100% - 200px);
-    margin-top: 36px;
-    margin-left: 36px;
-
-
-// @TODO put all common CSS code in one file - then all others for each page ina d fiferent file? or too much?
-
-// Creating <span class="titlePhrase in login.php currently to create title style
+label {
+    display: block;
 }

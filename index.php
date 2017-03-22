@@ -15,7 +15,8 @@ require_once('CS.php');
         <meta name="description" content="CodeShare">
         <meta name="author" content="JN">
 
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/all.css">
+        <link rel="stylesheet" href="css/index.css">
    </head>
    <body>
         <header>
@@ -42,7 +43,7 @@ require_once('CS.php');
                     <form action="add.php" method="post" id="addPostForm" name="mainForm">
 
                         Text to Upload:
-                        <textarea name="content" class="textarea" id="main" cols=""></textarea>
+                        <textarea name="content" class="textarea" id="content" cols=""></textarea>
 
                         Description:
                         <textarea id="description" name="description" cols="" class="textarea"></textarea>

@@ -14,7 +14,7 @@
     <meta name="description" content="CodeShare">
     <meta name="author" content="JN">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
@@ -33,12 +33,15 @@
         <img src="images/notebook.jpg" id="noteBookImage" />
     </aside>
     <section>
-        <form action="checklogin.php" method="post" id="loginForm" name="loginForm">
-            <span class="titlePhrase">Login</span>span>
-            Username:
-            <input name="myusername" type="text" id="myusername">
-            Password:
-            <input name="mypassword" type="password" id="mypassword">
+        <form action="checklogin.php" method="post" class="detailsForm" name="loginForm">
+            <span class="titlePhrase">Login</span>
+
+            <label for="username">Username:</label>
+            <input name="username" type="text" class="input field">
+
+            <label for="password">Password:</label>
+            <input name="password" type="password" class="input field">
+
             <input type="submit" name="Submit" value="Login">
         </form>
     </section>
