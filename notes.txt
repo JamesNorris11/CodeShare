@@ -34,3 +34,6 @@ check IDs don't already exist for both post and user when inserting
 make sure can't use same display name or email etc - and that there's error checking for this as well in the database as well as else where
 
 display search results on multiple pages ?
+
+
+instructions/help page?

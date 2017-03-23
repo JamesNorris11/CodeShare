@@ -16,13 +16,15 @@
 
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/login.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
 <body>
 <header>
     <a id="bannerLink" href="index.php"><span class="dots">&bull;</span> CodeShare <span class="dots">&bull;</span></a>
 
     <ul id="navList">
-        <li class="navButton"><a href="new.php">New Upload</a></li>
+        <li class="navButton"><a href="index.php">New Upload</a></li>
         <li class="navButton"><a href="search.php">Search</a></li>
         <li class="navButton"><a href="login.php" id="active">Login</a></li>
         <li class="navButton"><a href="register.php">Register</a></li>
@@ -30,19 +32,20 @@
 </header>
 <main>
     <aside>
-        <img src="images/notebook.jpg" id="noteBookImage" />
     </aside>
     <section>
         <form action="checklogin.php" method="post" class="detailsForm" name="loginForm">
             <span class="titlePhrase">Login</span>
 
-            <label for="username">Username:</label>
+            <label for="username">Username</label>
             <input name="username" type="text" class="input field">
 
-            <label for="password">Password:</label>
+            <label for="password">Password</label>
             <input name="password" type="password" class="input field">
 
-            <input type="submit" name="Submit" value="Login">
+            <input type="submit" name="Submit" class="submit" value="Login">
+
+            <a href="forgot.php" class="forgot">Forgotten your username or password?</a>
         </form>
     </section>
 </main>

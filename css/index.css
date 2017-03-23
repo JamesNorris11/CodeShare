@@ -1,44 +1,67 @@
 .stats {
     font-weight: bold;
-    text-align: center;
+    text-align: right;
+    margin-right: 23px;
+
     display: block;
 }
 
 .title {
+    font-size: 20px;
+
     margin-bottom: 4px;
 }
 
 .number {
     color: #E25D33;
+    font-size: 40px;
 
     margin-bottom: 16px;
 }
 
 #addPostForm {
-    font-size: 15px;
-
+    font-size: 20px;
     width: 90%;
     height: calc(100% - 200px);
     margin-top: 36px;
     margin-left: 36px;
 }
 
+.labelAbove {
+    margin-bottom: 20px;
+
+    display: block;
+}
+
 .textarea {
+    font-size: 15px;
+
     background-color: rgb(230, 230, 230);
     border: thin solid #E25D33;
+
+    box-shadow: 0 4px 2px rgba(0,0,0,0.12), 0 4px 6px rgba(0,0,0,0.24);
 
     width: 100%;
 }
 
 #content {
-    height: 95%;
+    height: 75%;
     min-height: 80px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 #description {
     height: 40px;
-    margin-bottom: 11px;
+    margin-bottom: 15px;
+}
+
+.horizontalInput {
+    font-size: 18px;
+    font-family: 'Quicksand', "Trebuchet MS", sans-serif;
+
+    margin-top: 12px;
+    margin-left: 12px;
+    margin-right: 37px;
 }
 
 #password {
