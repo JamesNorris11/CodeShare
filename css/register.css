@@ -1,0 +1,27 @@
+label {
+    display: block;
+}
+
+section {
+    /* This overwrites all.cs section attributes */
+    /* other overwrites included in this file */
+    width: 100%;
+    margin-left: 0;
+}
+
+.submit {
+    float: none;
+
+    display: block;
+    margin: 10px auto 30px auto;
+}
+
+label {
+    text-align: left;
+    width: 200px;
+    display: inline-block;
+}
+
+.field {
+    margin-right: 17px;
+}
