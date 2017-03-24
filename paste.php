@@ -7,6 +7,7 @@
  */
 
 require_once('CS.php');
+require_once('geshi/geshi.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,7 @@ require_once('CS.php');
     <ul id="navList">
         <li class="navButton"><a href="" id="active">New Upload</a></li>
         <li class="navButton"><a href="search.php">Search</a></li>
+        <li class="navButton"><a href="profile.php">My Profile</a></li>
         <li class="navButton"><a href="login.php">Login</a></li>
         <li class="navButton"><a href="register.php">Register</a></li>
         <li class="navButton"><a href="logout.php">Logout</a></li>
@@ -34,37 +36,61 @@ require_once('CS.php');
 </header>
 <main>
     <aside>
-        <span class="title stats">Total Users</span>
-        <span class="number stats"><?php echo number_format(CS::getStats('Jds3f')['users']); ?></span>
-        <span class="title stats">Total Posts</span>
-        <span class="number stats"><?php echo number_format(CS::getStats('Jds3f')['posts']); ?></span>
-
-        <img src="images/notebook.jpg" id="noteBookImage" />
+        <span class="title stats">Post ID</span>
+        <span class="info stats"><?php echo CS::getPost($_GET['id'])->getPostID(); ?></span>
+        <span class="title stats">Posted by</span>
+        <span class="info stats"><?php echo CS::getPost($_GET['id'])->getUserID(); ?></span>
+        <span class="title stats">Posted at</span>
+        <span class="info stats">
+            <?php
+            $date = CS::getPost($_GET['id'])->getPostDate();
+            echo date("H:i:s", $date) . "<br>" . date("d-m-y", $date);
+            ?>
+        </span>
+        <span class="title stats">Language</span>
+        <span class="info stats"><?php echo CS::getPost($_GET['id'])->getLanguage(); ?></span>
     </aside>
     <section>
-        <form action="add.php" method="post" id="addPostForm" name="mainForm">
+        <table id="outputTable">
+            <?php
+                // Get contents of PHP post
+                if ($_GET['id']) {
+                    $postContents = CS::getPost($_GET['id'])->getContent();
 
-            <label for="content" class="labelAbove">Text to Upload</label>
-            <textarea name="content" class="textarea" id="content" cols=""></textarea>
 
-            <label for="description" class="labelAbove">Description</label>
-            <textarea id="description" name="description" cols="" class="textarea"></textarea>
 
-            <label for="password">Post Password</label>
-            <input type="Password" class="input horizontalInput" id="password" name="password">
+                    // Comes from DB details in the end
+                    $language = 'html5';
+                    if ($language !== null) {
+                        $geshi = new GeSHi($postContents, $language);
 
-            <label for="language">Syntax Highlighting</label>
-            <select class="input horizontalInput" name="language">
-                <option label="abap" value="abap">abap</option>
-                <option label="actionscript" value="actionscript" selected="selected">actionscript</option>
-                <option label="actionscript3" value="actionscript3">actionscript3</option>
-            </select>
+                        // encode it with htmlentities() for security so as not to execute user input
+                        // explode each new line (\n) to insert each line of input onto a new table line
+                        $contentsArray = explode("\n", $geshi->parse_code());
+                    }
+                    else {
+                        $contentsArray = explode("\n", htmlentities($postContents, ENT_QUOTES, "UTF-8"));
+                    }
 
-            <label for="language">Captcha</label>
-            <!-- <img src="captcha.php" /> -->
-            <input type="text" class="input horizontalInput" id="security" name="security">
-            <input type="submit" name="submit" class="submit" value="Submit"/>
-        </form>
+                    echo '<tr><td id="numberCell">';
+                    $x = 1;
+                    foreach ($contentsArray as $a) {
+                        echo $x . "\n";
+                        $x++;
+                    }
+                    echo "</td><td id='contentCell'>";
+                    $x = 1;
+                    foreach ($contentsArray as $a) {
+                        echo $a . "\n";
+                        $x++;
+                    }
+                    echo '</td></tr>';
+                }
+                else {
+                    // header(Location: index.php);
+                }
+            ?>
+        </table>
     </section>
 </main>
 <script src="js/script.js"></script>

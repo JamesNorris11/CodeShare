@@ -1,5 +1,54 @@
-aside {
-    background-color: rgb(230, 230, 230);
+#outputTable {
+    font-size: 16px;
 
-    border-right: thin solid #E25D33;
+    background-color: rgb(230, 230, 230);
+    border: thin solid #E25D33;
+    border-spacing: 0;
+
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+
+    vertical-align: top;
+
+    /* horizontal scrollbar added as needed */
+    overflow: auto;
+}
+
+#numberCell {
+    font-family: monospace;
+    background-color: #E25D33;
+
+    text-align: right;
+
+    padding-left: 5px;
+    padding-right: 7px;
+}
+
+#contentCell {
+    vertical-align: top;
+    white-space: nowrap;
+
+    padding-left: 15px;
+}
+
+.stats {
+    font-weight: bold;
+    text-align: right;
+    margin-right: -11px;
+
+    display: block;
+}
+
+.title {
+    font-size: 20px;
+
+    margin-bottom: 4px;
+}
+
+.info {
+    color: #E25D33;
+    font-size: 30px;
+
+    margin-bottom: 16px;
 }

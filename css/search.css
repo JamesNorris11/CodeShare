@@ -1,0 +1,29 @@
+label {
+    display: block;
+}
+
+section {
+    /* This overwrites all.cs section attributes */
+    /* other overwrites included in this file */
+    width: 100%;
+    margin-left: 0;
+}
+
+.submit {
+    float: none;
+
+    display: block;
+    margin: 10px auto 30px auto;
+}
+
+.input {
+    margin-top: 15px;
+}
+
+#submitDisplayName {
+    margin-bottom: 50px;
+}
+
+#submitAll {
+    margin-top: 15px;
+}

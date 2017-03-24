@@ -22,6 +22,7 @@
  *  connect()
  */
 require_once('../../db-codeshare/dbConfig.php');
+require_once('Post.php');
 
 class DB
 {

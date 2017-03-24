@@ -26,6 +26,7 @@
     <ul id="navList">
         <li class="navButton"><a href="index.php">New Upload</a></li>
         <li class="navButton"><a href="search.php">Search</a></li>
+        <li class="navButton"><a href="profile.php">My Profile</a></li>
         <li class="navButton"><a href="login.php" id="active">Login</a></li>
         <li class="navButton"><a href="register.php">Register</a></li>
     </ul>

@@ -27,6 +27,7 @@ require_once('CS.php');
                 <ul id="navList">
                     <li class="navButton"><a href="" id="active">New Upload</a></li>
                     <li class="navButton"><a href="search.php">Search</a></li>
+                    <li class="navButton"><a href="profile.php">My Profile</a></li>
                     <li class="navButton"><a href="login.php">Login</a></li>
                     <li class="navButton"><a href="register.php">Register</a></li>
                     <li class="navButton"><a href="logout.php">Logout</a></li>
@@ -47,13 +48,13 @@ require_once('CS.php');
                         <label for="content" class="labelAbove">Text to Upload</label>
                         <textarea name="content" class="textarea" id="content" cols=""></textarea>
 
-                        <label for="description" class="labelAbove">Description</label>
+                        <label for="description" class="labelAbove">Description *</label>
                         <textarea id="description" name="description" cols="" class="textarea"></textarea>
 
-                        <label for="password">Post Password</label>
+                        <label for="password">Post Password *</label>
                         <input type="Password" class="input horizontalInput" id="password" name="password">
 
-                        <label for="language">Syntax Highlighting</label>
+                        <label for="language">Syntax Highlighting *</label>
                         <select class="input horizontalInput" name="language">
                             <option label="abap" value="abap">abap</option>
                             <option label="actionscript" value="actionscript" selected="selected">actionscript</option>
@@ -64,6 +65,7 @@ require_once('CS.php');
                         <!-- <img src="captcha.php" /> -->
                         <input type="text" class="input horizontalInput" id="security" name="security">
                         <input type="submit" name="submit" class="submit" value="Submit"/>
+                        * Optional
                     </form>
             </section>
         </main>

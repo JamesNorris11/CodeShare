@@ -37,3 +37,32 @@ display search results on multiple pages ?
 
 
 instructions/help page?
+
+finishing designing pages
+login system
+form validation
+geshi highlighting
+search function
+cookies for login system
+email validation system
+password/username recovery system
+sessions for locked posts
+google captcha system
+profile page
+
+research for colours https://material.io/guidelines/style/color.html#color-color-palette ?? didn't use in the end
+
+test which tabs show on title bar
+
+PHP provides a built-in password hashing library that uses the bcrypt algorithm, currently considered the best algorithm for password hashing.
+https://phpbestpractices.org/
+-- but not using a salt?
+"Many sources will recommend that you also “salt” your password before hashing it.
+That’s a great idea, and password_hash() already salts your password for you. That means that you don’t have to salt it yourself."
+
+https://phpbestpractices.org/
+PHPMailer at Github
+
+Validating email addresses
+Use the filter_var() function.
+$email = filter_var($email, FILTER_SANITIZE_EMAIL); <-- ?
