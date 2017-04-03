@@ -35,30 +35,42 @@ require_once('geshi/geshi.php');
     </ul>
 </header>
 <main>
-    <aside>
-        <span class="title stats">Post ID</span>
-        <span class="info stats"><?php echo CS::getPost($_GET['id'])->getPostID(); ?></span>
-        <span class="title stats">Posted by</span>
-        <span class="info stats"><?php echo CS::getPost($_GET['id'])->getUserID(); ?></span>
-        <span class="title stats">Posted at</span>
-        <span class="info stats">
-            <?php
-            $date = CS::getPost($_GET['id'])->getPostDate();
-            echo date("H:i:s", $date) . "<br>" . date("d-m-y", $date);
-            ?>
-        </span>
-        <span class="title stats">Language</span>
-        <span class="info stats"><?php echo CS::getPost($_GET['id'])->getLanguage(); ?></span>
-    </aside>
-    <section>
-        <table id="outputTable">
-            <?php
-                // Get contents of PHP post
-                if ($_GET['id']) {
-                    $postContents = CS::getPost($_GET['id'])->getContent();
+    <?php
+        if ($_GET['id']) {
 
-
-
+        // Get contents of post
+        $postContents = CS::getPost($_GET['id'])->getContent();
+    ?>
+        <aside>
+            <span class="title stats">Post ID</span>
+            <span class="info stats"><?php echo CS::getPost($_GET['id'])->getPostID(); ?></span>
+            <span class="title stats">Posted by</span>
+            <span class="info stats">
+                <?php
+                    $userID = CS::getPost($_GET['id'])->getUserID();
+                    echo CS::getDisplayNameFromID($userID);
+                ?>
+            </span>
+            <span class="title stats">Posted at</span>
+            <span class="info stats">
+                <?php
+                $date = CS::getPost($_GET['id'])->getPostDate();
+                echo date("H:i:s", $date) . "<br>" . date("d-m-y", $date);
+                ?>
+            </span>
+            <span class="title stats">Language</span>
+            <span class="info stats"><?php echo CS::getPost($_GET['id'])->getLanguage(); ?></span>
+            <span class="title stats">Character Count</span>
+            <span class="info stats">
+                <?php
+                $charCount = strlen($postContents);
+                echo number_format($charCount);
+                ?>
+            </span>
+        </aside>
+        <section>
+            <table id="outputTable">
+                <?php
                     // Comes from DB details in the end
                     $language = 'html5';
                     if ($language !== null) {
@@ -85,10 +97,10 @@ require_once('geshi/geshi.php');
                         $x++;
                     }
                     echo '</td></tr>';
-                }
-                else {
-                    // header(Location: index.php);
-                }
+        }
+        else {
+            // header(Location: index.php);
+        }
             ?>
         </table>
     </section>

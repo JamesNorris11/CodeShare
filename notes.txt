@@ -66,3 +66,5 @@ PHPMailer at Github
 Validating email addresses
 Use the filter_var() function.
 $email = filter_var($email, FILTER_SANITIZE_EMAIL); <-- ?
+
+lots of DB methods would currently return NULL, this is not being dealth with with error checking....

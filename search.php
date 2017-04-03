@@ -36,7 +36,7 @@
     <aside>
     </aside>
     <section>
-        <form action="checklogin.php" method="post" class="detailsForm" name="loginForm">
+        <form action="results.php" method="post" class="detailsForm" name="loginForm">
             <span class="titlePhrase">Search</span>
 
             <label for="postsByDescription">Search posts by description</label>

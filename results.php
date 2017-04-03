@@ -6,6 +6,7 @@
  * Time: 14:47
  */
 
+require_once('CS.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,25 +36,44 @@
 <main>
     <aside>
         <!-- This needs sorting -->
-        <span style="font-size: 30px;">New search</span>
+        <span style="font-size: 30px;">New search - Needs Sorting</span>
     </aside>
     <section>
-        <form action="checklogin.php" method="post" class="detailsForm" name="loginForm">
-            <span class="titlePhrase">Search Results</span>
+        <span class="titlePhrase">Search Results</span>
+        <table id="resultsTable">
+            <tr>
+                <th id="IDHeader">Post ID</th>
+                <th id="PWHeader">PW</th>
+                <th id="postedByHeader">Posted By</th>
+                <th id="postedAtHeader">Posted At</th>
+                <th>Description</th>
+            </tr>
+            <?php
+            // Get contents of PHP post
+            if ($_GET['search']) {
+                // Do specific searches
+            }
+            else {
+                $arrayOfPosts = CS::getAllPosts();
 
-            <label for="postsByDescription">Search posts by description</label>
-            <input name="postsByDescription" type="text" class="input field">
-
-            <input type="submit" name="submit" class="submit" value="Search">
-
-            <label for="postsByDisplayName">Search posts by user displayname</label>
-            <input name="postsByDisplayName" type="password" class="input field">
-
-            <input type="submit" name="Submit" class="submit" value="Search">
-
-            <label for="submitAll">Show all posts</label>
-            <input type="submit" name="SubmitAll" class="submit" id="submitAll" value="Search">
-        </form>
+                foreach ($arrayOfPosts as $a) {
+                    $postID = $a->getPostID();
+                    $postDate = $a->getPostDate();
+                    $formatPostDate = date("H:i:s d-m-y", $postDate);
+                    $passwordSet = (($a->getPassword() != null) ? '<img src="images/miniLock.png">' : '');
+                    echo '<tr>';
+                    echo '<td><a href="paste.php?id=' . $postID . '" class="IDLinkCell">';
+                    echo $postID . '</a></td>';
+                    echo '<td class="imageCell">' .$passwordSet . '</td>';
+                    echo '<td>' . CS::getDisplayNameFromID($a->getUserID()) . '</td>';
+                    echo '<td>' . $formatPostDate . '</td>';
+                    echo '<td>' . $a->getDescription() . '</td>';
+                    echo '</tr>';
+                    $x++;
+                }
+            }
+            ?>
+        </table>
     </section>
 </main>
 <script src="js/script.js"></script>

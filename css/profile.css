@@ -21,3 +21,83 @@ section {
 .titlePhrase {
     margin-top: 40px;
 }
+
+#userInfoArea {
+    margin: 0px auto 30px auto;
+    width: 70%;
+}
+
+.userTable {
+    font-size: 16px;
+
+    background-color: rgb(230, 230, 230);
+
+    table-layout: fixed;
+    margin: 0 auto;
+}
+
+.userInfoTable {
+    border: none;
+
+    display: inline-block;
+}
+
+#descriptionHeader {
+    border-bottom: 0px;
+
+    width: 600px;
+}
+
+#IDHeader {
+    width: 110px;
+}
+
+#PWHeader {
+    width: 41px;
+}
+
+#postedByHeader {
+    width: 200px;
+}
+
+#postedAtHeader {
+    width: 155px;
+}
+
+.IDLinkCell {
+    color: #000;
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+.IDLinkCell:hover {
+    text-decoration: underline;
+}
+
+.imageCell {
+    padding: 4px 5px 0px 5px;
+}
+
+table, th, td {
+    border: 1px solid #E25D33;
+    border-collapse: collapse;
+
+    text-align: center;
+}
+
+tr {
+    height: 45px;
+}
+
+th, td {
+    padding: 8px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.submit {
+    display: inline-block;
+}

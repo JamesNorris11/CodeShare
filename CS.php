@@ -61,6 +61,20 @@ class CS
         return $stats;
     }
 
+    // @return array of Post objects
+    public static function getAllPosts()
+    {
+        $DB = new DB('Posts');
+        return $DB->selectAllPosts();
+    }
+
+    // @return DisplayName
+    public static function getDisplayNameFromID($userID)
+    {
+        $DB = new DB('Users');
+        return $DB->selectDisplayNameByUserID($userID);
+    }
+
     public static function registerUser() {
         // @TODO maybe methods should be more overall like this - and then things like addUser in DB or somewhere else?
         // this function would then do other stuff as well as calling addUser() method

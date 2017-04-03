@@ -5,11 +5,14 @@
     border: thin solid #E25D33;
     border-spacing: 0;
 
+
     margin-top: 50px;
     margin-left: 50px;
     margin-bottom: 30px;
+    width: 93%;
 
     vertical-align: top;
+    display: inline-block;
 
     /* horizontal scrollbar added as needed */
     overflow: auto;

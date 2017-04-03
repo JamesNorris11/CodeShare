@@ -16,13 +16,16 @@
  *  selectUser()
  *  selectDisplayNameExists()
  *  selectUserPosts()
- *  selectTotalPostsOrUsers
+ *  selectTotalPostsOrUsers()
+ *  selectAllPosts()
+ *  selectUserByUserID()
  *
  *  selectTable()
  *  connect()
  */
 require_once('../../db-codeshare/dbConfig.php');
 require_once('Post.php');
+require_once('User.php');
 
 class DB
 {
@@ -180,8 +183,6 @@ class DB
             $stmt->bindParam(':DisplayName', $displayName);
             $stmt->execute();
 
-            $row = $stmt->fetch();
-
             if ($stmt->rowCount() == 0) {
                 return false;
             }
@@ -245,7 +246,60 @@ class DB
         }
     }
 
+    public function selectAllPosts() {
+        try {
+            // prepare sql and bind parameters
+            $stmt = $this->dbCon->prepare("SELECT * FROM $this->table");
+            $stmt->execute();
 
+            if ($stmt->rowCount() == 0) {
+                return null;
+            }
+            else {
+                $posts = [];
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $post = new Post(
+                        $row['UserID'],
+                        $row['Language'],
+                        $row['Password'],
+                        $row['Description'],
+                        $row['Content'],
+                        $row['PostDate'],
+                        $row['PostID']
+                    );
+                    array_push($posts, $post);
+                }
+                return $posts;
+            }
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
+
+    public function selectDisplayNameByUserID($userID) {
+        try {
+            // prepare sql and bind parameters
+            $stmt = $this->dbCon->prepare("SELECT DisplayName FROM $this->table WHERE UserID = :UserID");
+            $stmt->bindParam(':UserID', $userID);
+            $stmt->execute();
+
+            if ($stmt->rowCount() == 0) {
+                return null;
+            }
+            else {
+                $row = $stmt->fetch();
+
+                return $row['DisplayName'];
+            }
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
 
     public function setTable($T)
     {

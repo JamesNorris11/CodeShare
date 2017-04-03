@@ -95,6 +95,8 @@ aside {
 
     float: left;
     position: absolute;
+
+    word-wrap: break-word;
 }
 
 #noteBookImage {
