@@ -35,8 +35,7 @@ require_once('CS.php');
 </header>
 <main>
     <aside>
-        <!-- This needs sorting -->
-        <span style="font-size: 30px;">New search - Needs Sorting</span>
+        <input type="button" name="newSearch" class="submit" value="New Search"/>
     </aside>
     <section>
         <span class="titlePhrase">Search Results</span>
@@ -76,6 +75,6 @@ require_once('CS.php');
         </table>
     </section>
 </main>
-<script src="js/script.js"></script>
+<script src="js/getLangs.js"></script>
 </body>
 </html>

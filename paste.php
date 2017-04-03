@@ -26,7 +26,7 @@ require_once('geshi/geshi.php');
     <a id="bannerLink" href="index.php"><span class="dots">&bull;</span> CodeShare <span class="dots">&bull;</span></a>
 
     <ul id="navList">
-        <li class="navButton"><a href="" id="active">New Upload</a></li>
+        <li class="navButton"><a href="index.php" id="active">New Upload</a></li>
         <li class="navButton"><a href="search.php">Search</a></li>
         <li class="navButton"><a href="profile.php">My Profile</a></li>
         <li class="navButton"><a href="login.php">Login</a></li>
@@ -76,11 +76,12 @@ require_once('geshi/geshi.php');
                     if ($language !== null) {
                         $geshi = new GeSHi($postContents, $language);
 
-                        // encode it with htmlentities() for security so as not to execute user input
-                        // explode each new line (\n) to insert each line of input onto a new table line
+                        // GeSHi does not require htmlentities() as it is included
                         $contentsArray = explode("\n", $geshi->parse_code());
                     }
                     else {
+                        // encode it with htmlentities() for security so as not to execute user input
+                        // explode each new line (\n) to insert each line of input onto a new table line
                         $contentsArray = explode("\n", htmlentities($postContents, ENT_QUOTES, "UTF-8"));
                     }
 
@@ -105,6 +106,6 @@ require_once('geshi/geshi.php');
         </table>
     </section>
 </main>
-<script src="js/script.js"></script>
+<script src="js/getLangs.js"></script>
 </body>
 </html>

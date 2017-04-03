@@ -68,3 +68,9 @@ Use the filter_var() function.
 $email = filter_var($email, FILTER_SANITIZE_EMAIL); <-- ?
 
 lots of DB methods would currently return NULL, this is not being dealth with with error checking....
+
+
+to write about hacking through character encoding ????
+
+http://stackoverflow.com/questions/279170/utf-8-all-the-way-through
+1st response to "UTF-8 all the way through"

@@ -21,11 +21,12 @@ require_once('CS.php');
        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
    </head>
    <body>
-        <header>
+    <div include-html="langlist.html"></div>
+    <header>
             <a id="bannerLink" href="index.php"><span class="dots">&bull;</span> CodeShare <span class="dots">&bull;</span></a>
 
                 <ul id="navList">
-                    <li class="navButton"><a href="" id="active">New Upload</a></li>
+                    <li class="navButton"><a href="index.php" id="active">New Upload</a></li>
                     <li class="navButton"><a href="search.php">Search</a></li>
                     <li class="navButton"><a href="profile.php">My Profile</a></li>
                     <li class="navButton"><a href="login.php">Login</a></li>
@@ -43,7 +44,7 @@ require_once('CS.php');
                 <img src="images/notebook.jpg" id="noteBookImage" />
             </aside>
             <section>
-                    <form action="add.php" method="post" id="addPostForm" name="mainForm">
+                    <form action="addpost.php" method="post" id="addPostForm" name="mainForm">
 
                         <label for="content" class="labelAbove">Text to Upload</label>
                         <textarea name="content" class="textarea" id="content" cols=""></textarea>
@@ -56,9 +57,9 @@ require_once('CS.php');
 
                         <label for="language">Syntax Highlighting *</label>
                         <select class="input horizontalInput" name="language">
-                            <option label="abap" value="abap">abap</option>
-                            <option label="actionscript" value="actionscript" selected="selected">actionscript</option>
-                            <option label="actionscript3" value="actionscript3">actionscript3</option>
+                            <script>
+                                includeHTML();
+                            </script>
                         </select>
 
                         <label for="language">Captcha</label>
@@ -69,6 +70,6 @@ require_once('CS.php');
                     </form>
             </section>
         </main>
-   <script src="js/script.js"></script>
+   <script src="js/getLangs.js"></script>
    </body>
 </html>

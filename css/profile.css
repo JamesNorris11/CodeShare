@@ -2,11 +2,20 @@ label {
     display: block;
 }
 
+main {
+    height: calc(100% - 140px);
+}
+
 section {
     /* This overwrites all.cs section attributes */
     /* other overwrites included in this file */
-    width: 100%;
-    margin-left: 0;
+    width: 40%;
+    height: 40%;
+
+    margin-right: 6%;
+
+    float: right;
+    position: relative;
 }
 
 .submit {
@@ -16,15 +25,38 @@ section {
     margin: 10px auto 30px auto;
 }
 
-/* none of these css ABOVE is likely to be actually needed for this file! And in other files? */
+aside {
+    width: 36%;
+
+    /* auto is initial setting */
+    bottom: auto;
+
+    margin-left: 40px;
+}
 
 .titlePhrase {
     margin-top: 40px;
+    margin-bottom: 12px;
+}
+
+.titlePhraseSmall {
+    font-size: 30px;
+    text-align: center;
+
+    display: block;
+    margin-bottom: 30px;
 }
 
 #userInfoArea {
-    margin: 0px auto 30px auto;
-    width: 70%;
+    margin-left: 24px;
+}
+
+#userInfoArea th {
+    padding: 13px 24px;
+}
+
+#userInfoArea td {
+    padding: 13px 24px;
 }
 
 .userTable {
@@ -36,16 +68,27 @@ section {
     margin: 0 auto;
 }
 
+.postsTable {
+    table-layout: fixed;
+    width: 100%;
+}
+
 .userInfoTable {
     border: none;
 
-    display: inline-block;
+    display: inline-table;
+    width: 456px;
+
+    table-layout: fixed;
 }
 
-#descriptionHeader {
-    border-bottom: 0px;
+#dispNameColLabel {
+    width: 180px;
 
-    width: 600px;
+}
+
+#dispNameColValue {
+    width: 276px;
 }
 
 #IDHeader {
@@ -54,10 +97,6 @@ section {
 
 #PWHeader {
     width: 41px;
-}
-
-#postedByHeader {
-    width: 200px;
 }
 
 #postedAtHeader {
@@ -100,4 +139,24 @@ th, td {
 
 .submit {
     display: inline-block;
+    padding: 8px 20px;
+}
+
+#input1, #input2, #input3 {
+    margin-left: 21px;
+
+    position: absolute;
+    float: right;
+}
+
+#input1 {
+    margin-top: 7px;
+}
+
+#input2 {
+    margin-top: 54px;
+}
+
+#input3 {
+    margin-top: 101px;
 }

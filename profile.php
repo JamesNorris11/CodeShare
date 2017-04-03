@@ -33,22 +33,22 @@ require_once('CS.php');
 </header>
 <main>
     <aside>
-    </aside>
-    <section>
+
             <?php
             if ($_GET['id']) {
 
                 ?>
-                <span class="titlePhrase">User Profile</span>
                 <div id="userInfoArea">
+                    <span class="titlePhraseSmall">User Info</span>
                     <table class="userTable userInfoTable">
                     <?php
                         // Get user details
                         $user = CS::getUser($_GET['id']);
+                        $date = $user->getRegisterDate();
                         ?>
                         <tr>
-                            <th>Display Name</th>
-                            <td><?php echo $user->getDisplayName() ?></td>
+                            <th id="dispNameColLabel">Display Name</th>
+                            <td id="dispNameColValue"><?php echo $user->getDisplayName() ?></td>
                         </tr>
                         <tr>
                             <th>Email</th>
@@ -56,24 +56,25 @@ require_once('CS.php');
                         </tr>
                         <tr>
                             <th>Password</th>
-                            <td><?php echo $user->getPassword() ?></td>
+                            <td>Not Shown</td>
                         </tr>
                         <tr>
                             <th>Registration Date</th>
-                            <td><?php echo $user->getRegisterDate() ?></td>
+                            <td><?php echo date("H:i:s d-m-y", $date) ?></td>
                         </tr>
                     </table>
-                    <input type="button" name="changeDisplayName" class="submit" value="Change"/>
-                    <input type="button" name="changeEmail" class="submit" value="Change"/>
-                    <input type="button" name="changePassword" class="submit" value="Change"/>
+                    <input type="button" name="changeDisplayName" id="input1" class="submit" value="Change"/>
+                    <input type="button" name="changeEmail" id="input2" class="submit" value="Change"/>
+                    <input type="button" name="changePassword" id="input3" class="submit" value="Change"/>
                 </div>
-
-                <span class="titlePhrase">User Posts</span>
-                <table class="userTable">
+        </aside>
+        <span class="titlePhrase">User Profile</span>
+        <section>
+                <span class="titlePhraseSmall">User Posts</span>
+                <table class="userTable postsTable">
                     <tr>
                         <th id="IDHeader">Post ID</th>
                         <th id="PWHeader">PW</th>
-                        <th id="postedByHeader">Posted By</th>
                         <th id="postedAtHeader">Posted At</th>
                         <th>Description</th>
                     </tr>
@@ -90,22 +91,21 @@ require_once('CS.php');
                     echo '<td><a href="paste.php?id=' . $postID . '" class="IDLinkCell">';
                     echo $postID . '</a></td>';
                     echo '<td class="imageCell">' .$passwordSet . '</td>';
-                    echo '<td>' . CS::getDisplayNameFromID($a->getUserID()) . '</td>';
                     echo '<td>' . $formatPostDate . '</td>';
                     echo '<td>' . $a->getDescription() . '</td>';
                     echo '</tr>';
                     $x++;
-                    ?>
-                </table>
-                <?php
                 }
-            }
-            else {
-                // header(Location: index.php);
-            }
+            ?>
+            </table>
+            <?php
+                }
+                else {
+                    // header(Location: index.php);
+                }
             ?>
     </section>
 </main>
-<script src="js/script.js"></script>
+<script src="js/getLangs.js"></script>
 </body>
 </html>

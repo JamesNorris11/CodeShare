@@ -72,7 +72,13 @@ class CS
     public static function getDisplayNameFromID($userID)
     {
         $DB = new DB('Users');
-        return $DB->selectDisplayNameByUserID($userID);
+        $name = $DB->selectDisplayNameByUserID($userID);
+        if ($name == null) {
+            return "Anonymous";
+        }
+        else {
+            return $name;
+        }
     }
 
     public static function registerUser() {

@@ -50,6 +50,6 @@
         </form>
     </section>
 </main>
-<script src="js/script.js"></script>
+<script src="js/getLangs.js"></script>
 </body>
 </html>
