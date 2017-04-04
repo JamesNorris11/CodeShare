@@ -74,3 +74,15 @@ to write about hacking through character encoding ????
 
 http://stackoverflow.com/questions/279170/utf-8-all-the-way-through
 1st response to "UTF-8 all the way through"
+
+for secure login *sessions*:
+http://www.wikihow.com/Create-a-Secure-Login-Script-in-PHP-and-MySQL
+
+http://stackoverflow.com/questions/12091951/php-sessions-login-with-remember-me <--
+first few answers are also helpful
+
+initially used htmlentities() only for content then realised it needed to be from literally any output that initially came from user input
+
+test other languages to make sure syntax highlighting works
+
+invisible google reCaptcha

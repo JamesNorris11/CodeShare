@@ -18,6 +18,21 @@
     overflow: auto;
 }
 
+#descriptionLabel {
+    font-style: italic;
+    color: #707070;
+
+    margin-top: 25px;
+    margin-left: 49px;
+    width: 93%;
+
+    position: absolute;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 #numberCell {
     font-family: monospace;
     background-color: #E25D33;
@@ -26,6 +41,9 @@
 
     padding-left: 5px;
     padding-right: 7px;
+
+    /* To keep one number on each line */
+    word-spacing: 39px;
 }
 
 #contentCell {
@@ -54,4 +72,35 @@
     font-size: 30px;
 
     margin-bottom: 16px;
+}
+
+#passwordArea {
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+
+    width: 350px;
+    height: 270px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: 68px auto 0 auto;
+    position: absolute;
+}
+
+#lockImage {
+    margin: 0 auto;
+    display: block;
+}
+
+#passwordInput {
+    margin-top: 15px;
+}
+
+.submit {
+    float: none;
+    display: block;
+    margin: 10px auto 30px auto;
 }

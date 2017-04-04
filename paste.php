@@ -36,44 +36,79 @@ require_once('geshi/geshi.php');
 </header>
 <main>
     <?php
-        if ($_GET['id']) {
+        if ((CS::getPost($_GET['id'])->getPassword() != null) && (1 == 1)) {
+            //second if is if /* session doesn't exist */
+            ?>
+            <div id="passwordArea">
+                <img id="lockImage" src="images/lock.png">
 
-        // Get contents of post
-        $postContents = CS::getPost($_GET['id'])->getContent();
-    ?>
-        <aside>
-            <span class="title stats">Post ID</span>
-            <span class="info stats"><?php echo CS::getPost($_GET['id'])->getPostID(); ?></span>
-            <span class="title stats">Posted by</span>
-            <span class="info stats">
-                <?php
-                    $userID = CS::getPost($_GET['id'])->getUserID();
-                    echo CS::getDisplayNameFromID($userID);
-                ?>
-            </span>
-            <span class="title stats">Posted at</span>
-            <span class="info stats">
-                <?php
-                $date = CS::getPost($_GET['id'])->getPostDate();
-                echo date("H:i:s", $date) . "<br>" . date("d-m-y", $date);
-                ?>
-            </span>
-            <span class="title stats">Language</span>
-            <span class="info stats"><?php echo CS::getPost($_GET['id'])->getLanguage(); ?></span>
-            <span class="title stats">Character Count</span>
-            <span class="info stats">
-                <?php
-                $charCount = strlen($postContents);
-                echo number_format($charCount);
-                ?>
-            </span>
-        </aside>
-        <section>
-            <table id="outputTable">
-                <?php
+                <label for="password">
+                    This post is protected by a password
+                    Please enter the password below
+                    IF I JUST POSTED I SHOULDN'T HAVE TO PUT IN PASSWORD
+                </label>
+                <input name="password" type="password" class="input field" id="passwordInput">
+
+                <input type="submit" name="submit" class="submit" value="Submit">
+            </div>
+            <?php
+        }
+        else {
+            if (!$_GET['id']) {
+                header('Location: index.php');
+            }
+
+            // Get contents of post
+            $postContents = CS::getPost($_GET['id'])->getContent();
+            ?>
+            <aside>
+                <span class="title stats">Post ID</span>
+                <span class="info stats">
+                        <?php
+                        echo htmlentities(CS::getPost($_GET['id'])->getPostID(), ENT_QUOTES, "UTF-8");
+                        ?>
+                    </span>
+                <span class="title stats">Posted by</span>
+                <span class="info stats">
+                        <?php
+                        $userID = CS::getPost($_GET['id'])->getUserID();
+                        echo htmlentities(CS::getDisplayNameFromID($userID), ENT_QUOTES, "UTF-8");
+                        ?>
+                    </span>
+                <span class="title stats">Posted at</span>
+                <span class="info stats">
+                        <?php
+                        $date = CS::getPost($_GET['id'])->getPostDate();
+                        echo htmlentities(date("H:i:s", $date), ENT_QUOTES, "UTF-8")
+                            . "<br>"
+                            . htmlentities(date("d-m-y", $date), ENT_QUOTES, "UTF-8");
+                        ?>
+                    </span>
+                <span class="title stats">Language</span>
+                <span class="info stats">
+                        <?php
+                        echo htmlentities(CS::getPost($_GET['id'])->getLanguage(), ENT_QUOTES, "UTF-8");
+                        ?>
+                    </span>
+                <span class="title stats">Character Count</span>
+                <span class="info stats">
+                        <?php
+                        $charCount = strlen($postContents);
+                        echo htmlentities(number_format($charCount), ENT_QUOTES, "UTF-8");
+                        ?>
+                    </span>
+            </aside>
+            <section>
+                    <span id="descriptionLabel">
+                        <?php
+                        echo htmlentities(CS::getPost($_GET['id'])->getDescription(), ENT_QUOTES, "UTF-8");
+                        ?>
+                    </span>
+                <table id="outputTable">
+                    <?php
                     // Comes from DB details in the end
                     $language = 'html5';
-                    if ($language !== null) {
+                    if (($language !== null) || ($language === "none")) {
                         $geshi = new GeSHi($postContents, $language);
 
                         // GeSHi does not require htmlentities() as it is included
@@ -98,14 +133,11 @@ require_once('geshi/geshi.php');
                         $x++;
                     }
                     echo '</td></tr>';
-        }
-        else {
-            // header(Location: index.php);
-        }
+                }
             ?>
         </table>
     </section>
 </main>
-<script src="js/getLangs.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

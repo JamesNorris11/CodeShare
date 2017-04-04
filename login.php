@@ -35,8 +35,9 @@
     <aside>
     </aside>
     <section>
+        <span class="titlePhrase">Login</span>
+
         <form action="checklogin.php" method="post" class="detailsForm" name="loginForm">
-            <span class="titlePhrase">Login</span>
 
             <label for="username">Username</label>
             <input name="username" type="text" class="input field">
@@ -50,6 +51,6 @@
         </form>
     </section>
 </main>
-<script src="js/getLangs.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

@@ -61,12 +61,12 @@ require_once('CS.php');
                     $formatPostDate = date("H:i:s d-m-y", $postDate);
                     $passwordSet = (($a->getPassword() != null) ? '<img src="images/miniLock.png">' : '');
                     echo '<tr>';
-                    echo '<td><a href="paste.php?id=' . $postID . '" class="IDLinkCell">';
-                    echo $postID . '</a></td>';
-                    echo '<td class="imageCell">' .$passwordSet . '</td>';
-                    echo '<td>' . CS::getDisplayNameFromID($a->getUserID()) . '</td>';
-                    echo '<td>' . $formatPostDate . '</td>';
-                    echo '<td>' . $a->getDescription() . '</td>';
+                    echo '<td><a href="paste.php?id=' . htmlentities($postID, ENT_QUOTES, "UTF-8") . '" class="IDLinkCell">';
+                    echo htmlentities($postID, ENT_QUOTES, "UTF-8") . '</a></td>';
+                    echo '<td class="imageCell">' . $passwordSet . '</td>';
+                    echo '<td>' . CS::getDisplayNameFromID(htmlentities($a->getUserID(), ENT_QUOTES, "UTF-8")) . '</td>';
+                    echo '<td>' . htmlentities($formatPostDate, ENT_QUOTES, "UTF-8") . '</td>';
+                    echo '<td>' . htmlentities( $a->getDescription(), ENT_QUOTES, "UTF-8") . '</td>';
                     echo '</tr>';
                     $x++;
                 }
@@ -75,6 +75,6 @@ require_once('CS.php');
         </table>
     </section>
 </main>
-<script src="js/getLangs.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

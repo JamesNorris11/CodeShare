@@ -48,11 +48,11 @@ require_once('CS.php');
                         ?>
                         <tr>
                             <th id="dispNameColLabel">Display Name</th>
-                            <td id="dispNameColValue"><?php echo $user->getDisplayName() ?></td>
+                            <td id="dispNameColValue"><?php echo htmlentities($user->getDisplayName(), ENT_QUOTES, "UTF-8") ?></td>
                         </tr>
                         <tr>
                             <th>Email</th>
-                            <td><?php echo $user->getEmail() ?></td>
+                            <td><?php echo htmlentities($user->getEmail(), ENT_QUOTES, "UTF-8") ?></td>
                         </tr>
                         <tr>
                             <th>Password</th>
@@ -60,7 +60,7 @@ require_once('CS.php');
                         </tr>
                         <tr>
                             <th>Registration Date</th>
-                            <td><?php echo date("H:i:s d-m-y", $date) ?></td>
+                            <td><?php echo htmlentities(date("H:i:s d-m-y", $date), ENT_QUOTES, "UTF-8") ?></td>
                         </tr>
                     </table>
                     <input type="button" name="changeDisplayName" id="input1" class="submit" value="Change"/>
@@ -88,11 +88,11 @@ require_once('CS.php');
                     $formatPostDate = date("H:i:s d-m-y", $postDate);
                     $passwordSet = (($a->getPassword() != null) ? '<img src="images/miniLock.png">' : '');
                     echo '<tr>';
-                    echo '<td><a href="paste.php?id=' . $postID . '" class="IDLinkCell">';
-                    echo $postID . '</a></td>';
-                    echo '<td class="imageCell">' .$passwordSet . '</td>';
-                    echo '<td>' . $formatPostDate . '</td>';
-                    echo '<td>' . $a->getDescription() . '</td>';
+                    echo '<td><a href="paste.php?id=' . htmlentities($postID, ENT_QUOTES, "UTF-8") . '" class="IDLinkCell">';
+                    echo htmlentities($postID, ENT_QUOTES, "UTF-8") . '</a></td>';
+                    echo '<td class="imageCell">' . $passwordSet . '</td>';
+                    echo '<td>' . htmlentities($formatPostDate, ENT_QUOTES, "UTF-8") . '</td>';
+                    echo '<td>' . htmlentities($a->getDescription(), ENT_QUOTES, "UTF-8") . '</td>';
                     echo '</tr>';
                     $x++;
                 }
@@ -106,6 +106,6 @@ require_once('CS.php');
             ?>
     </section>
 </main>
-<script src="js/getLangs.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

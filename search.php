@@ -36,8 +36,9 @@
     <aside>
     </aside>
     <section>
+        <span class="titlePhrase">Search</span>
+
         <form action="results.php" method="post" class="detailsForm" name="loginForm">
-            <span class="titlePhrase">Search</span>
 
             <label for="postsByDescription">Search posts by description</label>
             <input name="postsByDescription" type="text" class="input field">
@@ -45,7 +46,7 @@
             <input type="submit" name="submit" class="submit" value="Search">
 
             <label for="postsByDisplayName">Search posts by user displayname</label>
-            <input name="postsByDisplayName" type="password" class="input field">
+            <input name="postsByDisplayName" type="text" class="input field">
 
             <input type="submit" name="Submit" class="submit" id="submitDisplayName" value="Search">
 
@@ -54,6 +55,6 @@
         </form>
     </section>
 </main>
-<script src="js/getLangs.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

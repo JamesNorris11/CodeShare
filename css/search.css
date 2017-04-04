@@ -9,6 +9,14 @@ section {
     margin-left: 0;
 }
 
+.titlePhrase {
+    margin-top: 50px;
+}
+
+.detailsForm {
+    text-align: center;
+}
+
 .submit {
     float: none;
 

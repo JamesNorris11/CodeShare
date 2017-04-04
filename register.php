@@ -35,33 +35,39 @@
     <aside>
     </aside>
     <section>
-        <form action="checkregister.php" method="post" class="detailsForm" name="registerForm">
-            <span class="titlePhrase">Register</span>
+        <span class="titlePhrase">Register</span>
+        <form action="adduser.php" method="post" class="detailsForm" name="registerForm">
 
             <div>
-                <label for="username">Email</label>
-                <input name="username" type="text" class="input field">
-                <span class="help">?</span>
+                <label for="email">Email</label>
+                <input name="email" type="text" class="input field">
+                <span class="hoverHelp" id="helpEmail">?</span>
+                <span class="tip" id="tipEmail"></span>
+                <span id="helpMessage"></span>
             </div>
             <div>
                 <label for="displayName">Display Name</label>
                 <input name="displayName" type="text" class="input field">
-                <span class="help">?</span>
+                <span class="hoverHelp" id="helpDisplayName">?</span>
+                <span class="tip" id="tipDisplayName"></span>
             </div>
             <div>
                 <label for="password">Password</label>
                 <input name="password" type="password" class="input field">
-                <span class="help">?</span>
+                <span class="hoverHelp" id="helpPassword">?</span>
+                <span class="tip" id="tipPassword"></span>
             </div>
             <div>
                 <label for="repeatPassword">Repeat Password</label>
                 <input name="repeatPassword" type="password" class="input field">
-                <span class="help">?</span>
+                <span class="hoverHelp" id="helpRepeatPassword">?</span>
+                <span class="tip" id="tipRepeatPassword"></span>
             </div>
             <input type="submit" name="Submit" class="submit" value="Register">
         </form>
     </section>
 </main>
-<script src="js/getLangs.js"></script>
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
