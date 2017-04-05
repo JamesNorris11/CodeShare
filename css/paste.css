@@ -44,6 +44,8 @@
 
     /* To keep one number on each line */
     word-spacing: 39px;
+
+    width: 25px;
 }
 
 #contentCell {

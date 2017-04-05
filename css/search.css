@@ -13,6 +13,10 @@ section {
     margin-top: 50px;
 }
 
+.redTitle {
+    color: red;
+}
+
 .detailsForm {
     text-align: center;
 }

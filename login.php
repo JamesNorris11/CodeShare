@@ -39,8 +39,8 @@
 
         <form action="checklogin.php" method="post" class="detailsForm" name="loginForm">
 
-            <label for="username">Username</label>
-            <input name="username" type="text" class="input field">
+            <label for="email">Email</label>
+            <input name="email" type="text" class="input field">
 
             <label for="password">Password</label>
             <input name="password" type="password" class="input field">

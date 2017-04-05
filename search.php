@@ -36,7 +36,11 @@
     <aside>
     </aside>
     <section>
-        <span class="titlePhrase">Search</span>
+
+        <span class="titlePhrase<?php echo ($_GET['e'] == 1 ? ' redTitle' : ''); ?>">
+            <?php echo 'Search ' . ($_GET['e'] == 1 ? '- No Results found!' : ''); ?>
+        </span>
+
 
         <form action="results.php" method="post" class="detailsForm" name="loginForm">
 
@@ -45,7 +49,7 @@
 
             <input type="submit" name="submit" class="submit" value="Search">
 
-            <label for="postsByDisplayName">Search posts by user displayname</label>
+            <label for="postsByDisplayName">Search posts by user display name</label>
             <input name="postsByDisplayName" type="text" class="input field">
 
             <input type="submit" name="Submit" class="submit" id="submitDisplayName" value="Search">

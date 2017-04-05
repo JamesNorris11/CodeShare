@@ -18,7 +18,10 @@
  *  selectUserPosts()
  *  selectTotalPostsOrUsers()
  *  selectAllPosts()
- *  selectUserByUserID()
+ *  selectAllPostsByDescription()
+ *  selectDisplayNameByUserID()
+ *  selectUserIDByDisplayName()
+ *  selectUserByEmail()
  *
  *  selectTable()
  *  connect()
@@ -209,21 +212,7 @@ class DB
                 return null;
             }
             else {
-                $posts = [];
-
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $post = new Post(
-                        $row['UserID'],
-                        $row['Language'],
-                        $row['Password'],
-                        $row['Description'],
-                        $row['Content'],
-                        $row['PostDate'],
-                        $row['PostID']
-                    );
-                    array_push($posts, $post);
-                }
-                return $posts;
+                return $this->createPostObject($stmt);
             }
         }
         catch(PDOException $E)
@@ -246,7 +235,8 @@ class DB
         }
     }
 
-    public function selectAllPosts() {
+    public function selectAllPosts()
+    {
         try {
             // prepare sql and bind parameters
             $stmt = $this->dbCon->prepare("SELECT * FROM $this->table");
@@ -256,21 +246,7 @@ class DB
                 return null;
             }
             else {
-                $posts = [];
-
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $post = new Post(
-                        $row['UserID'],
-                        $row['Language'],
-                        $row['Password'],
-                        $row['Description'],
-                        $row['Content'],
-                        $row['PostDate'],
-                        $row['PostID']
-                    );
-                    array_push($posts, $post);
-                }
-                return $posts;
+                return $this->createPostObject($stmt);
             }
         }
         catch(PDOException $E)
@@ -279,7 +255,32 @@ class DB
         }
     }
 
-    public function selectDisplayNameByUserID($userID) {
+    // @return array of Post type objects if found, null if no result found
+    public function selectAllPostsByDescription($description)
+    {
+        try {
+            $description = '%' . $description . '%';
+
+            // prepare sql and bind parameters
+            $stmt = $this->dbCon->prepare("SELECT * FROM $this->table WHERE Description LIKE :DescriptionSearch");
+            $stmt->bindParam(':DescriptionSearch', $description);
+            $stmt->execute();
+
+            if ($stmt->rowCount() == 0) {
+                return null;
+            }
+            else {
+                return $this->createPostObject($stmt);
+            }
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
+
+    public function selectDisplayNameByUserID($userID)
+    {
         try {
             // prepare sql and bind parameters
             $stmt = $this->dbCon->prepare("SELECT DisplayName FROM $this->table WHERE UserID = :UserID");
@@ -293,6 +294,61 @@ class DB
                 $row = $stmt->fetch();
 
                 return $row['DisplayName'];
+            }
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
+
+    public function selectUserIDByDisplayName($displayName)
+    {
+        try {
+            // prepare sql and bind parameters
+            $stmt = $this->dbCon->prepare("SELECT UserID FROM $this->table WHERE DisplayName = :DisplayName");
+            $stmt->bindParam(':DisplayName', $displayName);
+            $stmt->execute();
+
+            if ($stmt->rowCount() == 0) {
+                return null;
+            }
+            else {
+                $row = $stmt->fetch();
+
+                return $row['UserID'];
+            }
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
+
+    // @return Person object, null if not found
+    public function selectUserByEmail($email)
+    {
+        try {
+            // prepare sql and bind parameters
+            $stmt = $this->dbCon->prepare("SELECT * FROM $this->table WHERE Email = :Email");
+            $stmt->bindParam(':Email', $email);
+            $stmt->execute();
+
+            if ($stmt->rowCount() == 0) {
+                return null;
+            }
+            else {
+                $row = $stmt->fetch();
+
+                $user = new User(
+                    $row['Email'],
+                    $row['Password'],
+                    $row['DisplayName'],
+                    $row['RegisterDate'],
+                    $row['UserID']
+                );
+
+                return $user;
             }
         }
         catch(PDOException $E)
@@ -316,5 +372,25 @@ class DB
         catch (PDOException $E) {
         die('Error: ' . $E->getMessage());
         }
+    }
+
+    private function createPostObject($stmt)
+    {
+        $posts = [];
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $post = new Post(
+                $row['UserID'],
+                $row['Language'],
+                $row['Password'],
+                $row['Description'],
+                $row['Content'],
+                $row['PostDate'],
+                $row['PostID']
+            );
+            array_push($posts, $post);
+        }
+
+        return $posts;
     }
 }

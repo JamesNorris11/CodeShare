@@ -68,6 +68,27 @@ class CS
         return $DB->selectAllPosts();
     }
 
+    // @return array of Post objects
+    public static function getAllPostsByDisplayName($displayName)
+    {
+        $DB = new DB('Users');
+        $userID = $DB->selectUserIDByDisplayName($displayName);
+        if ($userID) {
+            $DB->setTable("Posts");
+            return $DB->selectUserPosts($userID);
+        }
+        else {
+            return null;
+        }
+    }
+
+    // @return array of Post objects
+    public static function getAllPostsByDescription($description)
+    {
+        $DB = new DB('Posts');
+        return $DB->selectAllPostsByDescription($description);
+    }
+
     // @return DisplayName
     public static function getDisplayNameFromID($userID)
     {
@@ -81,8 +102,24 @@ class CS
         }
     }
 
-    public static function registerUser() {
+    // @return userID if successful, null if not
+    public static function performLogin($email, $password) {
+        $DB = new DB('Users');
+        $user = $DB->selectUserByEmail($email);
+        if (($user == null) || ($user->getPassword() == null)) {
+            return null;
+        }
+        if (!password_verify($password, $user->getPassword())) {
+            return null;
+        }
+        return $user->getUserID();
+    }
+
+    public static function registerUser()
+    {
         // @TODO maybe methods should be more overall like this - and then things like addUser in DB or somewhere else?
         // this function would then do other stuff as well as calling addUser() method
+
+        // @TODO DO I NEED THIS FUNCTION?
     }
 }

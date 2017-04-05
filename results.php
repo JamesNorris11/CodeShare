@@ -7,6 +7,21 @@
  */
 
 require_once('CS.php');
+
+if ($_POST['postsByDescription']) {
+    $arrayOfPosts = CS::getAllPostsByDescription($_POST['postsByDescription']);
+}
+else if ($_POST['postsByDisplayName']) {
+    $arrayOfPosts = CS::getAllPostsByDisplayName($_POST['postsByDisplayName']);
+}
+else {
+    $arrayOfPosts = CS::getAllPosts();
+}
+
+if (!$arrayOfPosts) {
+    header('Location: search.php?e=1');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,44 +50,39 @@ require_once('CS.php');
 </header>
 <main>
     <aside>
-        <input type="button" name="newSearch" class="submit" value="New Search"/>
     </aside>
     <section>
         <span class="titlePhrase">Search Results</span>
-        <table id="resultsTable">
-            <tr>
-                <th id="IDHeader">Post ID</th>
-                <th id="PWHeader">PW</th>
-                <th id="postedByHeader">Posted By</th>
-                <th id="postedAtHeader">Posted At</th>
-                <th>Description</th>
-            </tr>
-            <?php
-            // Get contents of PHP post
-            if ($_GET['search']) {
-                // Do specific searches
-            }
-            else {
-                $arrayOfPosts = CS::getAllPosts();
 
+        <a href="search.php" type="button" class="submit">New Search</a>
+
+
+            <table id="resultsTable">
+                <tr>
+                    <th id="IDHeader">Post ID</th>
+                    <th id="PWHeader">PW</th>
+                    <th id="postedByHeader">Posted By</th>
+                    <th id="postedAtHeader">Posted At</th>
+                    <th>Description</th>
+                </tr>
+                <?php
                 foreach ($arrayOfPosts as $a) {
                     $postID = $a->getPostID();
                     $postDate = $a->getPostDate();
                     $formatPostDate = date("H:i:s d-m-y", $postDate);
                     $passwordSet = (($a->getPassword() != null) ? '<img src="images/miniLock.png">' : '');
                     echo '<tr>';
-                    echo '<td><a href="paste.php?id=' . htmlentities($postID, ENT_QUOTES, "UTF-8") . '" class="IDLinkCell">';
-                    echo htmlentities($postID, ENT_QUOTES, "UTF-8") . '</a></td>';
-                    echo '<td class="imageCell">' . $passwordSet . '</td>';
-                    echo '<td>' . CS::getDisplayNameFromID(htmlentities($a->getUserID(), ENT_QUOTES, "UTF-8")) . '</td>';
-                    echo '<td>' . htmlentities($formatPostDate, ENT_QUOTES, "UTF-8") . '</td>';
-                    echo '<td>' . htmlentities( $a->getDescription(), ENT_QUOTES, "UTF-8") . '</td>';
+                        echo '<td><a href="paste.php?id=' . htmlentities($postID, ENT_QUOTES, "UTF-8") . '" class="IDLinkCell">';
+                        echo htmlentities($postID, ENT_QUOTES, "UTF-8") . '</a></td>';
+                        echo '<td class="imageCell">' . $passwordSet . '</td>';
+                        echo '<td>' . CS::getDisplayNameFromID(htmlentities($a->getUserID(), ENT_QUOTES, "UTF-8")) . '</td>';
+                        echo '<td>' . htmlentities($formatPostDate, ENT_QUOTES, "UTF-8") . '</td>';
+                        echo '<td>' . htmlentities($a->getDescription(), ENT_QUOTES, "UTF-8") . '</td>';
                     echo '</tr>';
                     $x++;
                 }
-            }
-            ?>
-        </table>
+            echo '</table>';
+        ?>
     </section>
 </main>
 <script src="js/script.js"></script>

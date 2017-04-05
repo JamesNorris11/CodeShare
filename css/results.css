@@ -17,6 +17,14 @@ aside {
     padding: 53px 1px 0 19px;
 }
 
+.submit {
+    margin-top: 0px;
+    margin-left: 60px;
+
+    float: left;
+    position: absolute;
+}
+
 #resultsTable {
     font-size: 16px;
 

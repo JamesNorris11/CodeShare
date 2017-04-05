@@ -8,6 +8,19 @@
 
 require_once('CS.php');
 require_once('geshi/geshi.php');
+
+if (!$_GET['id']) {
+    header('Location: index.php');
+    exit;
+}
+
+// Get contents of post
+$post = CS::getPost($_GET['id']);
+
+if (!$post) {
+    header('Location: index.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +49,8 @@ require_once('geshi/geshi.php');
 </header>
 <main>
     <?php
+        $postContents = $post->getContent();
+
         if ((CS::getPost($_GET['id'])->getPassword() != null) && (1 == 1)) {
             //second if is if /* session doesn't exist */
             ?>
@@ -54,12 +69,6 @@ require_once('geshi/geshi.php');
             <?php
         }
         else {
-            if (!$_GET['id']) {
-                header('Location: index.php');
-            }
-
-            // Get contents of post
-            $postContents = CS::getPost($_GET['id'])->getContent();
             ?>
             <aside>
                 <span class="title stats">Post ID</span>
@@ -106,8 +115,8 @@ require_once('geshi/geshi.php');
                     </span>
                 <table id="outputTable">
                     <?php
-                    // Comes from DB details in the end
-                    $language = 'html5';
+                    $language = $post->getLanguage();
+
                     if (($language !== null) || ($language === "none")) {
                         $geshi = new GeSHi($postContents, $language);
 

@@ -49,6 +49,10 @@ password/username recovery system
 sessions for locked posts
 google captcha system
 profile page
+forgotten password
+make change buttons work with functionality on profile page
+about/welcome page?
+make error messages show as page changes e.g. succesfully logged in
 
 research for colours https://material.io/guidelines/style/color.html#color-color-palette ?? didn't use in the end
 
@@ -86,3 +90,5 @@ initially used htmlentities() only for content then realised it needed to be fro
 test other languages to make sure syntax highlighting works
 
 invisible google reCaptcha
+
+talk about not using cookies, just used sessions
