@@ -12,6 +12,8 @@ class Session
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
+
+            $_SESSION['posts'] = [];
         }
     }
 
@@ -30,4 +32,14 @@ class Session
     public function get($key) {
         return $_SESSION[$key];
     }
+
+    public function addPostAccess($postID) {
+        array_push($_SESSION['posts'], $postID);
+    }
+
+    // @return true if user has gained access to this post ID, false if not
+    public function postAccess($postID) {
+        return (in_array($postID, $_SESSION['posts']) ? true : false);
+    }
+
 }

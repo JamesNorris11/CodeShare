@@ -8,7 +8,7 @@ require_once('Session.php');
 //}
 
 $email = $_POST['email'];
-$password =  password_hash($_POST['password]'], PASSWORD_DEFAULT);
+$password =  password_hash($_POST['password'], PASSWORD_DEFAULT);
 $displayName = $_POST['displayName'];
 
 // @TODO NEED TO CHECK IF EMAIL OR DISPLAY NAME ALREADY EXISTS!!!

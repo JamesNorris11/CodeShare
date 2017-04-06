@@ -37,7 +37,7 @@
     <section>
         <span class="titlePhrase">Login</span>
 
-        <form action="checklogin.php" method="post" class="detailsForm" name="loginForm">
+        <form action="performlogin.php" method="post" class="detailsForm" name="loginForm">
 
             <label for="email">Email</label>
             <input name="email" type="text" class="input field">

@@ -107,6 +107,7 @@ class CS
         $DB = new DB('Users');
         $user = $DB->selectUserByEmail($email);
         if (($user == null) || ($user->getPassword() == null)) {
+            exit;
             return null;
         }
         if (!password_verify($password, $user->getPassword())) {

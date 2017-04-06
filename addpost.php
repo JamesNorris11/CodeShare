@@ -3,16 +3,6 @@
     require_once('CS.php');
     require_once('Session.php');
 
-    $session = new Session();
-
-    if ($session->get("loggedIn") != 1) {
-        header('Location: index.php');
-        exit;
-    }
-    else {
-        $userID = $session->get("userID");
-    }
-
     //if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['quantity']) {
    // if (is_int($_POST['quantity']) { $quantity= $_POST['quantity']; }
     //}
@@ -21,6 +11,8 @@
 
     $language = $_POST['language'];
     $password = $_POST['password'];
+    $description = $_POST['description'];
+    $content = $_POST['content'];
 
     if (strlen($description) > 100) {
         header('Location: index.php');
@@ -30,8 +22,6 @@
     if ($password) {
         $password = password_hash($password, PASSWORD_DEFAULT);
     }
-    $description = $_POST['description'];
-    $content = $_POST['content'];
 
 
     if (!$content) {
@@ -44,6 +34,13 @@
     $newPost = new Post($userID, $language, $password, $description, $content);
     CS::addPost($newPost);
 
+    $newPostID = $newPost->getPostID();
+
+    if ($password) {
+        $session = new Session();
+        $session->addPostAccess($newPostID);
+    }
+
     // PostID created in $newPost creation
-    header('Location: paste.php?id=' . $newPost->getPostID());
+    header('Location: paste.php?id=' . $newPostID);
     exit;

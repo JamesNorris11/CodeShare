@@ -12,15 +12,17 @@
     //@TODO SO MUCH PHP USER INPUT VALIDATION NEEDS ADDING EVERYWHERE
     //@TODO ADD JS THAT TELLS USER IF PW OR USERNAME IS WRONG
 
-    if ((!$POST['email']) || (!$_POST['password'])) {
+    if ((!$_POST['email']) || (!$_POST['password'])) {
         header('Location: login.php');
+        exit;
         //@TODO need error message with this?
     }
 
-    $userID = CS::performLogin($POST['email'], $_POST['password']);
+    $userID = CS::performLogin($_POST['email'], $_POST['password']);
     if (!$userID) {
         header('Location: index.php');
         exit;
+        // @TODO needs to take user to login page again OR JS needs to sort out error message as noit correct...
     }
     else {
         $session = new Session();
