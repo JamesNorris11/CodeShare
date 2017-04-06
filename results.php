@@ -7,12 +7,15 @@
  */
 
 require_once('CS.php');
+require_once('Session.php');
 
-if ($_POST['postsByDescription']) {
-    $arrayOfPosts = CS::getAllPostsByDescription($_POST['postsByDescription']);
+$session = new Session();
+
+if ($_GET['d']) {
+    $arrayOfPosts = CS::getAllPostsByDescription($_GET['d']);
 }
-else if ($_POST['postsByDisplayName']) {
-    $arrayOfPosts = CS::getAllPostsByDisplayName($_POST['postsByDisplayName']);
+else if ($_GET['n']) {
+    $arrayOfPosts = CS::getAllPostsByDisplayName($_GET['n']);
 }
 else {
     $arrayOfPosts = CS::getAllPosts();
@@ -42,10 +45,12 @@ if (!$arrayOfPosts) {
     <ul id="navList">
         <li class="navButton"><a href="index.php">New Upload</a></li>
         <li class="navButton"><a href="search.php" id="active">Search</a></li>
-        <li class="navButton"><a href="profile.php">My Profile</a></li>
-        <li class="navButton"><a href="login.php">Login</a></li>
-        <li class="navButton"><a href="register.php">Register</a></li>
-        <li class="navButton"><a href="logout.php">Logout</a></li>
+        <?php
+            echo $session->get("loggedIn") ? '<li class="navButton"><a href="profile.php">My Profile</a></li>' : '';
+            echo !$session->get("loggedIn") ? '<li class="navButton"><a href="login.php">Login</a></li>' : '';
+            echo !$session->get("loggedIn") ? '<li class="navButton"><a href="register.php">Register</a></li>' : '';
+            echo $session->get("loggedIn") ? '<li class="navButton"><a href="logout.php">Logout</a></li>' : '';
+        ?>
     </ul>
 </header>
 <main>
@@ -85,6 +90,5 @@ if (!$arrayOfPosts) {
         ?>
     </section>
 </main>
-<script src="js/script.js"></script>
 </body>
 </html>

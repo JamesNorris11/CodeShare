@@ -7,10 +7,15 @@ section {
     /* other overwrites included in this file */
     width: 100%;
     margin-left: 0;
+    height: calc(100% - 200px);
 }
 
 .titlePhrase {
     margin-top: 50px;
+}
+
+.detailsForm {
+    height: auto;
 }
 
 .redTitle {

@@ -52,10 +52,12 @@ if (($_POST['password']) && ($post->getPassword())) {
     <ul id="navList">
         <li class="navButton"><a href="index.php" id="active">New Upload</a></li>
         <li class="navButton"><a href="search.php">Search</a></li>
-        <li class="navButton"><a href="profile.php">My Profile</a></li>
-        <li class="navButton"><a href="login.php">Login</a></li>
-        <li class="navButton"><a href="register.php">Register</a></li>
-        <li class="navButton"><a href="logout.php">Logout</a></li>
+        <?php
+            echo $session->get("loggedIn") ? '<li class="navButton"><a href="profile.php">My Profile</a></li>' : '';
+            echo !$session->get("loggedIn") ? '<li class="navButton"><a href="login.php">Login</a></li>' : '';
+            echo !$session->get("loggedIn") ? '<li class="navButton"><a href="register.php">Register</a></li>' : '';
+            echo $session->get("loggedIn") ? '<li class="navButton"><a href="logout.php">Logout</a></li>' : '';
+        ?>
     </ul>
 </header>
 <main>
@@ -73,7 +75,7 @@ if (($_POST['password']) && ($post->getPassword())) {
                     Please enter the password below
                 </label>
 
-                <form action="paste.php" method="post">
+                <form action="paste.php?id=<?php echo $postID; ?>" method="post">
                     <input name="password" type="password" class="input field" id="passwordInput">
 
                     <input type="submit" name="submit" class="submit" value="Submit">
@@ -109,7 +111,7 @@ if (($_POST['password']) && ($post->getPassword())) {
                 <span class="title stats">Language</span>
                 <span class="info stats">
                         <?php
-                        echo htmlentities(CS::getPost($postID)->getLanguage(), ENT_QUOTES, "UTF-8");
+                        echo htmlentities(ucwords(CS::getPost($postID)->getLanguage()), ENT_QUOTES, "UTF-8");
                         ?>
                     </span>
                 <span class="title stats">Character Count</span>
@@ -160,6 +162,5 @@ if (($_POST['password']) && ($post->getPassword())) {
         </table>
     </section>
 </main>
-<script src="js/script.js"></script>
 </body>
 </html>

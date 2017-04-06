@@ -22,6 +22,7 @@
  *  selectDisplayNameByUserID()
  *  selectUserIDByDisplayName()
  *  selectUserByEmail()
+ *  selectFieldValueExists()
  *
  *  selectTable()
  *  connect()
@@ -357,20 +358,34 @@ class DB
         }
     }
 
-    public function setTable($T)
-    {
-        $this->table = $T;
-    }
-
-    private function connect()
+    public function selectFieldValueExists($field, $value)
     {
         try {
-            $this->dbCon = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
-            // set the PDO error mode to exception
-            $this->dbCon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $listOfFields = array(
+                "Email", "Password", "DisplayName", "UserID",
+                "Language", "Description", "Content", "PostDate", "PostID"
+                );
+
+            if (!in_array($field, $listOfFields)) {
+                return null;
+            }
+
+            // this is secure for $field as it never comes from the user
+            // prepare sql and bind parameters
+            $stmt = $this->dbCon->prepare("SELECT * FROM $this->table WHERE " . $field . " = :Val");
+            $stmt->bindParam(':Val', $value);
+            $stmt->execute();
+
+            if ($stmt->rowCount() == 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
         }
-        catch (PDOException $E) {
-        die('Error: ' . $E->getMessage());
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
         }
     }
 
@@ -392,5 +407,22 @@ class DB
         }
 
         return $posts;
+    }
+
+    public function setTable($T)
+    {
+        $this->table = $T;
+    }
+
+    private function connect()
+    {
+        try {
+            $this->dbCon = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
+            // set the PDO error mode to exception
+            $this->dbCon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $E) {
+        die('Error: ' . $E->getMessage());
+        }
     }
 }

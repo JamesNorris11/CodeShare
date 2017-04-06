@@ -1,10 +1,3 @@
-label {
-    margin-left: 24%;
-
-    display: inline-block;
-    width: 150px;
-}
-
 section {
     /* This overwrites all.cs section attributes */
     /* other overwrites included in this file */
@@ -25,10 +18,6 @@ section {
     margin-bottom: 35px;
 }
 
-.detailsForm {
-    margin-top: 16px;
-}
-
 #incorrectInfo {
     color: red;
     font-size: 25px;
@@ -38,19 +27,13 @@ section {
     display: block;
 }
 
-.tip {
-    margin-left: 20px;
-}
-
-.forgot {
-    color: #000;
-    text-decoration: none;
-
+.detailsForm {
     text-align: center;
 
-    display: block;
+    margin-top: 16px;
 }
 
-.forgot:hover {
-     text-decoration: underline;
- }
+.input {
+    display: block;
+    margin: 20px auto 30px auto;
+}

@@ -167,15 +167,6 @@ section {
     margin-bottom: 20px;
 }
 
-.forgot {
-    color: #000;
-    text-decoration: none;
-}
-
-.forgot:hover {
-    text-decoration: underline;
-}
-
 /* vietnamese */
 @font-face {
     font-family: 'Quicksand';

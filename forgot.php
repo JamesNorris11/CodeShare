@@ -23,7 +23,7 @@ if ($session->get("loggedIn") == 1) {
     <meta name="author" content="JN">
 
     <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/forgot.css">
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
@@ -42,33 +42,21 @@ if ($session->get("loggedIn") == 1) {
     <aside>
     </aside>
     <section>
-        <span class="titlePhrase">Login</span>
+        <span class="titlePhrase">Forgotten Password</span>
         <?php
-            if ($_GET['e'] == 1) {
-                echo '<span id="incorrectInfo">Incorrect email or password!</span>';
-            }
+        if ($_GET['e'] == 1) {
+            echo '<span id="incorrectInfo">This email address does not exist!</span>';
+        }
         ?>
 
-        <form action="performlogin.php" method="post" class="detailsForm" name="loginForm">
+        <form action="sendforgotemail.php" method="post" class="detailsForm" name="loginForm">
 
-            <div>
-                <label for="email">Email</label>
-                <input name="email" type="text" class="input field">
-                <span class="tip" id="tipEmail"></span>
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input name="password" type="password" class="input field">
-                <span class="tip" id="tipPassword"></span>
-            </div>
+            <label for="email">Please enter your email address. You will be emailed a link to reset your password</label>
+            <input name="email" type="text" class="input field">
 
             <input type="submit" name="Submit" class="submit" value="Login">
-
-            <a href="forgot.php" class="forgot">Forgotten your username or password?</a>
         </form>
     </section>
 </main>
-<script src="js/jquery-3.2.0.min.js"></script>
-<script src="js/login.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@ I HAVEN'T INCLUDED DB CONFIG FILE IN GIT OR AUTO UPLOAD B/C IT CONTAINS PASSWORD
 http://stackoverflow.com/questions/27787607/method-not-found-in-class
 
 
-@TODO Make SQL statements secure - mysqli? PDO?
+Make SQL statements secure - mysqli? PDO?
 
 check IDs don't already exist for both post and user when inserting
 
@@ -92,3 +92,16 @@ test other languages to make sure syntax highlighting works
 invisible google reCaptcha
 
 talk about not using cookies, just used sessions
+
+/* temp notes
+make search results use GET not POST
+
+google at what point you should create variable, e.g. if only going to use it twice
+
+
+user can type in any password and go to paste.php
+
+when enter correct password it doesn't let you go back to it later without putting password in
+
+make only correct tabs show
+*/

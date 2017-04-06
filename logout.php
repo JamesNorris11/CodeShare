@@ -10,4 +10,3 @@
     $session = new Session();
     $session->end();
     header('Location: index.php');
-    exit;

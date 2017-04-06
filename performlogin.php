@@ -9,23 +9,28 @@
     require_once('CS.php');
     require_once('Session.php');
 
+    $session = new Session();
+
+    if ($session->get("loggedIn") == 1) {
+        header('Location: index.php');
+        exit;
+    }
+
     //@TODO SO MUCH PHP USER INPUT VALIDATION NEEDS ADDING EVERYWHERE
     //@TODO ADD JS THAT TELLS USER IF PW OR USERNAME IS WRONG
 
     if ((!$_POST['email']) || (!$_POST['password'])) {
         header('Location: login.php');
         exit;
-        //@TODO need error message with this?
     }
 
     $userID = CS::performLogin($_POST['email'], $_POST['password']);
     if (!$userID) {
-        header('Location: index.php');
+        header('Location: login.php?e=1');
         exit;
-        // @TODO needs to take user to login page again OR JS needs to sort out error message as noit correct...
     }
-    else {
-        $session = new Session();
-        $session->set("loggedIn", 1);
-        $session->set("userID", $userID);
-    }
+
+    $session->set("loggedIn", 1);
+    $session->set("userID", $userID);
+
+    header('Location: index.php');

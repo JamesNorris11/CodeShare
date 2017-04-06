@@ -6,6 +6,14 @@
  * Time: 14:47
  */
 
+require_once('Session.php');
+
+$session = new Session();
+
+if ($session->get("loggedIn") == 1) {
+    header('Location: index.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +34,6 @@
     <ul id="navList">
         <li class="navButton"><a href="index.php">New Upload</a></li>
         <li class="navButton"><a href="search.php">Search</a></li>
-        <li class="navButton"><a href="profile.php">My Profile</a></li>
         <li class="navButton"><a href="login.php">Login</a></li>
         <li class="navButton"><a href="register.php" id="active">Register</a></li>
     </ul>
@@ -68,6 +75,6 @@
     </section>
 </main>
 <script src="js/jquery-3.2.0.min.js"></script>
-<script src="js/script.js"></script>
+<script src="js/register.js"></script>
 </body>
 </html>

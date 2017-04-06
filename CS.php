@@ -102,12 +102,21 @@ class CS
         }
     }
 
+    // @return boolean
+    public static function checkFieldValueExists($table, $field, $value)
+    {
+        if (($table != 'Users') && ($table != 'Posts')) {
+            return null;
+        }
+        $DB = new DB($table);
+        return $DB->selectFieldValueExists($field, $value);
+    }
+
     // @return userID if successful, null if not
     public static function performLogin($email, $password) {
         $DB = new DB('Users');
         $user = $DB->selectUserByEmail($email);
         if (($user == null) || ($user->getPassword() == null)) {
-            exit;
             return null;
         }
         if (!password_verify($password, $user->getPassword())) {

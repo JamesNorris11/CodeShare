@@ -3,6 +3,13 @@
 require_once('CS.php');
 require_once('Session.php');
 
+$session = new Session();
+
+if ($session->get("loggedIn") == 1) {
+    header('Location: index.php');
+    exit;
+}
+
 //if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['quantity']) {
 // if (is_int($_POST['quantity']) { $quantity= $_POST['quantity']; }
 //}
@@ -24,10 +31,8 @@ if (strlen($displayName) > 20) {
 $newUser = new User($email, $password, $displayName);
 CS::addUser($newUser);
 
-$session = new Session();
 $session->set("loggedIn", 1);
 $session->set("userID", $newUser->getUserID());
 
 header('Location: index.php?m=1');
-exit;
 // @TODO should get welcome message when I've created an account!!
