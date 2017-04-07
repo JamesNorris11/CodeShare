@@ -14,7 +14,6 @@
  *  selectPost()
  *  insertUser()
  *  selectUser()
- *  selectDisplayNameExists()
  *  selectUserPosts()
  *  selectTotalPostsOrUsers()
  *  selectAllPosts()
@@ -22,6 +21,9 @@
  *  selectDisplayNameByUserID()
  *  selectUserIDByDisplayName()
  *  selectUserByEmail()
+ *  updateForgotPassword()
+ *  selectForgotPasswordCheck()
+ *  updatePassword()
  *  selectFieldValueExists()
  *
  *  selectTable()
@@ -170,28 +172,6 @@ class DB
                 );
 
                 return $user;
-            }
-        }
-        catch(PDOException $E)
-        {
-            echo 'Error: ' . $E->getMessage();
-        }
-    }
-
-    // @return true or false if display name already exists
-    public function selectDisplayNameExists($displayName)
-    {
-        try {
-            // prepare sql and bind parameters
-            $stmt = $this->dbCon->prepare("SELECT * FROM $this->table WHERE DisplayName = :DisplayName");
-            $stmt->bindParam(':DisplayName', $displayName);
-            $stmt->execute();
-
-            if ($stmt->rowCount() == 0) {
-                return false;
-            }
-            else {
-                return true;
             }
         }
         catch(PDOException $E)
@@ -382,6 +362,71 @@ class DB
             else {
                 return true;
             }
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
+
+    public function updateForgotPassword($email , $forgotString) {
+        try {
+            // prepare sql and bind parameters
+            $time = time();
+            $stmt = $this->dbCon->prepare("UPDATE $this->table SET ForgotCode = :Code, ForgotTime = :Time WHERE Email = :Email");
+            $stmt->bindParam(':Code', $forgotString);
+            $stmt->bindParam(':Time', $time);
+            $stmt->bindParam(':Email', $email);
+
+            $stmt->execute();
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
+
+    public function selectForgotPasswordCheck($code) {
+        try {
+            // prepare sql and bind parameters
+            $stmt = $this->dbCon->prepare("SELECT * FROM $this->table WHERE ForgotCode = :Code");
+            $stmt->bindParam(':Code', $code);
+            $stmt->execute();
+
+            $row = $stmt->fetch();
+
+            if ($stmt->rowCount() == 0) {
+                return null;
+            }
+            else {
+                $user = new User(
+                    $row['Email'],
+                    $row['Password'],
+                    $row['DisplayName'],
+                    $row['RegisterDate'],
+                    $row['UserID']
+                );
+
+                // Done this as forgot password is feature added late and therefore ForgotTime is not in User object
+                return array("user" => $user, "time" => $row['ForgotTime']);
+            }
+        }
+        catch(PDOException $E)
+        {
+            echo 'Error: ' . $E->getMessage();
+        }
+    }
+
+
+    public function updatePassword($userID, $password) {
+        try {
+            // prepare sql and bind parameters
+            $time = time();
+            $stmt = $this->dbCon->prepare("UPDATE $this->table SET Password = :Password WHERE UserID = :UserID");
+            $stmt->bindParam(':UserID', $userID);
+            $stmt->bindParam(':Password', $password);
+
+            $stmt->execute();
         }
         catch(PDOException $E)
         {

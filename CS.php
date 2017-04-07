@@ -125,6 +125,23 @@ class CS
         return $user->getUserID();
     }
 
+    // @return sets time and random string for user's forgotten password request
+    public static function setForgotPassword($email , $forgotString) {
+        $DB = new DB('Users');
+        $DB->updateForgotPassword($email , $forgotString);
+    }
+
+    // @return user object
+    public static function checkForgotString($code) {
+        $DB = new DB('Users');
+        return $DB->selectForgotPasswordCheck($code);
+    }
+
+    public static function setPassword($userID, $password) {
+        $DB = new DB('Users');
+        $DB->updatePassword($userID, $password);
+    }
+
     public static function registerUser()
     {
         // @TODO maybe methods should be more overall like this - and then things like addUser in DB or somewhere else?

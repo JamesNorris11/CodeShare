@@ -46,6 +46,7 @@ else {
     <aside>
         <div id="userInfoArea">
             <span class="titlePhraseSmall">User Info</span>
+
             <table class="userTable userInfoTable">
             <?php
                 // Get user details
@@ -58,11 +59,11 @@ else {
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td><?php echo htmlentities($user->getEmail(), ENT_QUOTES, "UTF-8") ?></td>
+                    <td id="emailColValue"><?php echo htmlentities($user->getEmail(), ENT_QUOTES, "UTF-8") ?></td>
                 </tr>
                 <tr>
                     <th>Password</th>
-                    <td>Not Shown</td>
+                    <td id="passwordColValue">Not Shown</td>
                 </tr>
                 <tr>
                     <th>Registration Date</th>
@@ -113,5 +114,7 @@ else {
         ?>
     </section>
 </main>
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/profile.js"></script>
 </body>
 </html>

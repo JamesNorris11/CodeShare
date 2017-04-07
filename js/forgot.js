@@ -16,7 +16,7 @@ $(document).ready(function(){
 
             correctSyntax = emailCorrect();
 
-            changeTipMessage($(this), correctSyntax, fieldName);
+            changeTipMessage($(this), correctSyntax, fieldName, fieldMessage);
         }
 
         else if ($(this).attr('name') == "password") {
@@ -26,12 +26,32 @@ $(document).ready(function(){
 
             correctSyntax = passwordCorrect();
 
-            changeTipMessage($(this), correctSyntax, fieldName);
+            // this is extra to update repeat password message when password field is changed
+            changeTipMessage(
+                $(
+                    'input[name=repeatPassword]')
+                , repeatPasswordCorrect()
+                , "RepeatPassword"
+                , "Your passwords do not match!"
+            );
+
+            changeTipMessage($(this), correctSyntax, fieldName, fieldMessage);
         }
+        else if ($(this).attr('name') == "repeatPassword") {
+
+            fieldName = "RepeatPassword";
+            fieldMessage = "Your passwords do not match!"
+
+            correctSyntax = repeatPasswordCorrect();
+
+            changeTipMessage($(this), correctSyntax, fieldName, fieldMessage);
+        }
+
     });
 
     function changeTipMessage(thisObj, correctSyntax, fieldName, fieldMessage) {
         if (fieldName) {
+            console.log(fieldName);
             if (correctSyntax == true) {
                 thisObj.css({"border": "1px solid #E25D33", "outline": "none"});
                 $("#tip" + fieldName)
@@ -46,8 +66,14 @@ $(document).ready(function(){
         }
     }
 
-    $('.submit').click(function(e) {
-        if ((!emailCorrect()) || (!passwordCorrect())) {
+    $('#submitPassword').click(function(e) {
+        if ((!passwordCorrect()) || (!repeatPasswordCorrect())) {
+            e.preventDefault()
+        }
+    });
+
+    $('#submitEmail').click(function(e) {
+        if (!emailCorrect()) {
             e.preventDefault()
         }
     });
@@ -70,7 +96,17 @@ $(document).ready(function(){
     function passwordCorrect()
     {
         var len = $('input[name=password]').val().length;
-        if ((len >= 1) && (len <= 100)) {
+        if ((len >= 6) && (len <= 100)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function repeatPasswordCorrect()
+    {
+        if ($('input[name=repeatPassword]').val() == $('input[name=password]').val()) {
             return true;
         }
         else {

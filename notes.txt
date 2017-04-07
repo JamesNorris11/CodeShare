@@ -105,3 +105,14 @@ when enter correct password it doesn't let you go back to it later without putti
 
 make only correct tabs show
 */
+
+https://github.com/PHPMailer/PHPMailer <-- phpMailer
+
+write about test function testMail()
+
+tested ";hello@ok.com"
+
+realised that /[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+/ needed to become
+/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/
+
+jquery fields error not going away when using google chrome autofill - talk about problems like this

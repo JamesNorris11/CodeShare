@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     $('#helpMessage').hide();
 
-    $('input').keyup(function() {
+    $('input').on("change keyup blur input", function() {
 
         $('#helpMessage').hide();
 
@@ -15,12 +15,16 @@ $(document).ready(function(){
             fieldMessage = "Please enter a valid email address"
 
             correctSyntax = emailCorrect();
+
+            changeTipMessage($(this), correctSyntax, fieldName, fieldMessage);
         }
         else if ($(this).attr('name') == "displayName") {
             fieldName = "DisplayName";
             fieldMessage = "Please enter a valid display name"
 
             correctSyntax = displayNameCorrect();
+
+            changeTipMessage($(this), correctSyntax, fieldName, fieldMessage);
 
         }
         else if ($(this).attr('name') == "password") {
@@ -39,6 +43,8 @@ $(document).ready(function(){
                 , "Your passwords do not match!"
             );
 
+            changeTipMessage($(this), correctSyntax, fieldName, fieldMessage);
+
         }
         else if ($(this).attr('name') == "repeatPassword") {
 
@@ -46,9 +52,9 @@ $(document).ready(function(){
             fieldMessage = "Your passwords do not match!"
 
             correctSyntax = repeatPasswordCorrect();
-        }
 
-        changeTipMessage($(this), correctSyntax, fieldName, fieldMessage);
+            changeTipMessage($(this), correctSyntax, fieldName, fieldMessage);
+        }
     });
 
     $('.hoverHelp').mouseover(function () {
@@ -84,16 +90,18 @@ $(document).ready(function(){
     });
 
     function changeTipMessage(thisObj, correctSyntax, fieldName, fieldMessage) {
-        if (correctSyntax == true) {
-            thisObj.css({"border": "1px solid #E25D33", "outline": "none"});
-            $("#tip" + fieldName)
-                .text("");
-        }
-        else {
-            thisObj.css({"border": "2px solid red", "outline": "none"});
-            $("#tip" + fieldName)
-                .text(fieldMessage)
-                .css("color", "red");
+        if (fieldName) {
+            if (correctSyntax == true) {
+                thisObj.css({"border": "1px solid #E25D33", "outline": "none"});
+                $("#tip" + fieldName)
+                    .text("");
+            }
+            else {
+                thisObj.css({"border": "2px solid red", "outline": "none"});
+                $("#tip" + fieldName)
+                    .text(fieldMessage)
+                    .css("color", "red");
+            }
         }
     }
 
@@ -103,7 +111,7 @@ $(document).ready(function(){
         var len = $('input[name=email]').val().length;
         if (len <= 100) {
             var email = $('input[name=email]').val();
-            var re = /\S+@\S+\.\S+/;
+            var re = /^\S+@\S+\.\S+$/;
 
             return re.test(email);
         }

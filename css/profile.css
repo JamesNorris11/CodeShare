@@ -26,7 +26,7 @@ section {
 }
 
 aside {
-    width: 36%;
+    width: 37%;
 
     /* auto is initial setting */
     bottom: auto;
@@ -159,4 +159,24 @@ th, td {
 
 #input3 {
     margin-top: 101px;
+}
+
+.field {
+    background-color: white;
+
+    width: 180px;
+
+    margin: 0;
+    margin-right: 15px;
+}
+
+.changeSubmit {
+    margin: 0;
+    padding: 5px 10px;
+}
+
+#fieldPassword {
+    display: block;
+    margin-bottom: 13px;
+    margin-left: 7px;
 }

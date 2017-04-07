@@ -7,9 +7,9 @@ section {
 
 .submit {
     float: none;
+    display: inline-block;
 
-    display: block;
-    margin: 10px auto 30px auto;
+    margin: 18px auto 30px auto;
 }
 
 .titlePhrase {
@@ -27,6 +27,29 @@ section {
     display: block;
 }
 
+#correctInfo {
+    font-size: 20px;
+
+    margin-top: 80px;
+
+    text-align: center;
+
+    display: block;
+    margin: 0 auto;
+
+    width: 60%;
+}
+
+.errorSection {
+    text-align: center;
+
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    height: 60%;
+    width: 50%;
+}
+
 .detailsForm {
     text-align: center;
 
@@ -36,4 +59,10 @@ section {
 .input {
     display: block;
     margin: 20px auto 30px auto;
+}
+
+.tip {
+    display: inline-block;
+
+    margin-bottom: 15px;
 }
