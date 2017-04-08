@@ -12,7 +12,7 @@ $(document).ready(function(){
 
         if ($(this).attr('name') == "email") {
             fieldName = "Email";
-            fieldMessage = "Please enter a valid email address"
+            fieldMessage = "Please enter a valid email address";
 
             correctSyntax = emailCorrect();
 
@@ -22,7 +22,7 @@ $(document).ready(function(){
         else if ($(this).attr('name') == "password") {
 
             fieldName = "Password";
-            fieldMessage = "Please enter a valid password"
+            fieldMessage = "Please enter a valid password";
 
             correctSyntax = passwordCorrect();
 
@@ -40,7 +40,7 @@ $(document).ready(function(){
         else if ($(this).attr('name') == "repeatPassword") {
 
             fieldName = "RepeatPassword";
-            fieldMessage = "Your passwords do not match!"
+            fieldMessage = "Your passwords do not match!";
 
             correctSyntax = repeatPasswordCorrect();
 

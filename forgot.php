@@ -33,7 +33,7 @@ if ($_GET['code']) {
                     $password = $_POST['password'];
                     if (strlen($password) >= 6) {
                         $password = password_hash($password, PASSWORD_DEFAULT);
-                        CS::setPassword($forgotUser['user']->getUserID(), $password);
+                        CS::setUserField($forgotUser['user']->getUserID(), "Password", $password);
                         $passwordChanged = true;
                     }
                 }
@@ -125,7 +125,7 @@ if ($_GET['code']) {
                 echo '<span id="correctInfo">You have been sent an email with a link to reset your password</span>';
             } else {
                 if ($_GET['e'] == 1) {
-                    echo '<span id="incorrectInfo">This email address does not exist!</span>';
+                    echo '<span id="incorrectInfo">This email address is not registered on our system!</span>';
                 }
                 ?>
 

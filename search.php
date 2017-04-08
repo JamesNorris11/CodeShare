@@ -49,6 +49,10 @@ $session = new Session();
 
         <form action="results.php" method="get" class="detailsForm" name="loginForm">
             <label for="postsByDescription">Search posts by description</label>
+
+            <span class="hoverHelp" id="helpByDescription">?</span>
+            <span id="helpMessage"></span>
+
             <input name="d" type="text" class="input field">
 
             <input type="submit" class="submit" value="Search">
@@ -56,6 +60,9 @@ $session = new Session();
 
         <form action="results.php" method="get" class="detailsForm" name="loginForm">
             <label for="postsByDisplayName">Search posts by user display name</label>
+
+            <span class="hoverHelp" id="helpByDisplayName">?</span>
+
             <input name="n" type="text" class="input field">
 
             <input type="submit" class="submit" id="submitDisplayName" value="Search">
@@ -67,5 +74,7 @@ $session = new Session();
         </form>
     </section>
 </main>
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>

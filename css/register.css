@@ -38,6 +38,9 @@ label {
 
 .hoverHelp {
     margin-right: 10px;
+
+    font-weight: bold;
+    color: #e25d33;
 }
 
 #helpMessage {
@@ -45,10 +48,10 @@ label {
 
     padding: 8px;
 
-    height: 110px;
-    width: 300px;
     margin-top: 8px;
-    margin-left: 26px;
+    margin-left: 45px;
+
+    width: 300px;
     position: absolute;
 
     /* So that it doesn't show at the start - JS uses it later */

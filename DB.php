@@ -21,10 +21,12 @@
  *  selectDisplayNameByUserID()
  *  selectUserIDByDisplayName()
  *  selectUserByEmail()
+ *  selectFieldValueExists()
  *  updateForgotPassword()
  *  selectForgotPasswordCheck()
- *  updatePassword()
- *  selectFieldValueExists()
+ *  updateUserField()
+ *
+ * createPostObject()
  *
  *  selectTable()
  *  connect()
@@ -417,14 +419,21 @@ class DB
         }
     }
 
-
-    public function updatePassword($userID, $password) {
+    public function updateUserField($userID, $field, $value) {
         try {
+            $listOfFields = array(
+                "Email", "Password", "DisplayName", "UserID",
+            );
+
+            if (!in_array($field, $listOfFields)) {
+                return null;
+            }
+
             // prepare sql and bind parameters
-            $time = time();
-            $stmt = $this->dbCon->prepare("UPDATE $this->table SET Password = :Password WHERE UserID = :UserID");
+            // this is secure for $field as it never comes from the user
+            $stmt = $this->dbCon->prepare("UPDATE $this->table SET " . $field . " = :Value WHERE UserID = :UserID");
             $stmt->bindParam(':UserID', $userID);
-            $stmt->bindParam(':Password', $password);
+            $stmt->bindParam(':Value', $value);
 
             $stmt->execute();
         }

@@ -137,10 +137,11 @@ class CS
         return $DB->selectForgotPasswordCheck($code);
     }
 
-    public static function setPassword($userID, $password) {
+    public static function setUserField($userID, $field, $password) {
         $DB = new DB('Users');
-        $DB->updatePassword($userID, $password);
+        $DB->updateUserField($userID, $field, $password);
     }
+
 
     public static function registerUser()
     {

@@ -52,6 +52,10 @@ aside {
     width: 155px;
 }
 
+#languageHeader {
+    width: 90px;
+}
+
 .IDLinkCell {
     color: #000;
     font-weight: bold;

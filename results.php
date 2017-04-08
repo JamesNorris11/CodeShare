@@ -68,6 +68,7 @@ if (!$arrayOfPosts) {
                     <th id="PWHeader">PW</th>
                     <th id="postedByHeader">Posted By</th>
                     <th id="postedAtHeader">Posted At</th>
+                    <th id="languageHeader">Language</th>
                     <th>Description</th>
                 </tr>
                 <?php
@@ -82,6 +83,7 @@ if (!$arrayOfPosts) {
                         echo '<td class="imageCell">' . $passwordSet . '</td>';
                         echo '<td>' . CS::getDisplayNameFromID(htmlentities($a->getUserID(), ENT_QUOTES, "UTF-8")) . '</td>';
                         echo '<td>' . htmlentities($formatPostDate, ENT_QUOTES, "UTF-8") . '</td>';
+                        echo '<td>' . htmlentities(ucwords($a->getLanguage()), ENT_QUOTES, "UTF-8") . '</td>';
                         echo '<td>' . htmlentities($a->getDescription(), ENT_QUOTES, "UTF-8") . '</td>';
                     echo '</tr>';
                     $x++;

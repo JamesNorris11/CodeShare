@@ -27,6 +27,12 @@ $session = new Session();
     <header>
         <a id="bannerLink" href="index.php"><span class="dots">&bull;</span> CodeShare <span class="dots">&bull;</span></a>
 
+        <?php
+        if ($_GET['m'] == 1) {
+            echo '<span id="message">Your account has been successfully created!</span>';
+        }
+        ?>
+
             <ul id="navList">
                 <li class="navButton"><a href="index.php" id="active">New Upload</a></li>
                 <li class="navButton"><a href="search.php">Search</a></li>
@@ -46,20 +52,25 @@ $session = new Session();
             <span class="number stats"><?php echo number_format(CS::getStats('Jds3f')['posts']); ?></span>
 
             <img src="images/notebook.jpg" id="noteBookImage">
+
+            <span id="helpMessage"></span>
         </aside>
         <section>
                 <form action="addpost.php" method="post" id="addPostForm" name="mainForm">
 
                     <label for="content" class="labelAbove">Text to Upload</label>
+                    <span class="hoverHelp" id="helpTextUpload">?</span>
                     <textarea name="content" class="textarea" id="content" cols=""></textarea>
 
                     <label for="description" class="labelAbove">Description *</label>
+                    <span class="hoverHelp" id="helpDescription">?</span>
                     <textarea id="description" name="description" cols="" class="textarea"></textarea>
 
                     <label for="password">Post Password *</label>
                     <input type="Password" class="input horizontalInput" id="password" name="password">
+                    <span class="hoverHelp" id="helpPassword">?</span>
 
-                    <label for="language">Syntax Highlighting *</label>
+                    <label class="marginLabel" for="language">Syntax Highlighting *</label>
                     <select class="input horizontalInput" name="language">
                         <option label="abap" value="abap">abap</option>
                         <option label="actionscript" value="actionscript">actionscript</option>
@@ -203,10 +214,14 @@ $session = new Session();
                         <option label="z80" value="z80">z80</option>
                     </select>
 
+                    <span class="hoverHelp" id="helpSyntax">?</span>
+
                     <input type="submit" name="submit" class="submit" value="Submit"/>
-                    * Optional
+                    <span class="marginLabel">* Optional</span>
                 </form>
             </section>
         </main>
+    <script src="js/jquery-3.2.0.min.js"></script>
+    <script src="js/index.js"></script>
     </body>
 </html>
