@@ -70,9 +70,7 @@ else {
                     <td><?php echo htmlentities(date("H:i:s d-m-y", $date), ENT_QUOTES, "UTF-8") ?></td>
                 </tr>
             </table>
-            <input type="button" name="changeDisplayName" id="input1" class="submit" value="Change"/>
-            <input type="button" name="changeEmail" id="input2" class="submit" value="Change"/>
-            <input type="button" name="changePassword" id="input3" class="submit" value="Change"/>
+            <input type="button" name="change" id="input" class="submit" value="Update"/>
         </div>
     </aside>
     <span class="titlePhrase">User Profile</span>

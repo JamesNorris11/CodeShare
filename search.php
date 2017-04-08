@@ -59,7 +59,7 @@ $session = new Session();
         </form>
 
         <form action="results.php" method="get" class="detailsForm" name="loginForm">
-            <label for="postsByDisplayName">Search posts by user display name</label>
+            <label for="postsByDisplayName">Search posts by display name</label>
 
             <span class="hoverHelp" id="helpByDisplayName">?</span>
 

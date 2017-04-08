@@ -6,7 +6,7 @@ $(document).ready(function(){
     var fieldName;
 
 
-    $('#input1').click(function(e) {
+    $('#input').click(function(e) {
 
         $('#dispNameColValue').html(
             '<form action="changedetails.php" method="post" name="loginForm">' +
@@ -16,9 +16,6 @@ $(document).ready(function(){
             '<input type="submit" name="Submit" id="submitDisplayName" class="submit changeSubmit" value="Submit">' +
         '</form>'
             );
-    });
-
-    $('#input2').click(function(e) {
 
         $('#emailColValue').html(
             '<form action="changedetails.php" method="post" name="loginForm">' +
@@ -28,9 +25,6 @@ $(document).ready(function(){
             '<input type="submit" name="Submit" id="submitEmail" class="submit changeSubmit" value="Submit">' +
             '</form>'
         );
-    });
-
-    $('#input3').click(function(e) {
 
         $('#passwordColValue').html(
             '<form action="changedetails.php" method="post" name="loginForm">' +
@@ -43,7 +37,6 @@ $(document).ready(function(){
             '</form>'
         );
     });
-
 
     // This is not:
     //     $('input').on("change keyup blur input", function() {

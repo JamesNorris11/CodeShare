@@ -37,10 +37,18 @@ label {
 }
 
 .hoverHelp {
+    color: #e25d33;
+    font-weight: bold;
+    text-align: center;
+
+    border-radius: 1ex;
+    border: 2px solid #e25d33;
     margin-right: 10px;
 
-    font-weight: bold;
-    color: #e25d33;
+    line-height: 1;
+    display: inline-block;
+    width: 1.8ex;
+    height: 1.85ex;
 }
 
 #helpMessage {

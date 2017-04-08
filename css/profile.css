@@ -137,28 +137,14 @@ th, td {
     overflow: hidden;
 }
 
+#input {
+    margin: 15px auto 0 auto;
+    display: block;
+}
+
 .submit {
     display: inline-block;
     padding: 8px 20px;
-}
-
-#input1, #input2, #input3 {
-    margin-left: 21px;
-
-    position: absolute;
-    float: right;
-}
-
-#input1 {
-    margin-top: 7px;
-}
-
-#input2 {
-    margin-top: 54px;
-}
-
-#input3 {
-    margin-top: 101px;
 }
 
 .field {

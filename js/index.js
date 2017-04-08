@@ -3,7 +3,7 @@ $(document).ready(function(){
     var correctSyntax;
     var fieldName;
     var fieldMessage;
-    var initString = '<span id="helpBoxQ">?</span>';
+    var initString = '<span id="helpBoxQ" class="hoverHelp">?</span>';
 
     $('#helpMessage').hide();
 

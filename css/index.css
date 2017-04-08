@@ -90,16 +90,21 @@
 }
 
 .hoverHelp {
-    font-weight: bold;
     color: #e25d33;
+    font-weight: bold;
+    text-align: center;
 
+    border-radius: 1ex;
+    border: 2px solid #e25d33;
     margin-left: 6px;
+
+    line-height: 1;
+    display: inline-block;
+    width: 1.8ex;
+    height: 1.85ex;
 }
 
 #helpBoxQ {
-    font-weight: bold;
-    color: #e25d33;
-
     margin: 0 5px;
 }
 
