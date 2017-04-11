@@ -52,8 +52,6 @@ $session = new Session();
             <span class="number stats"><?php echo number_format(CS::getStats('Jds3f')['posts']); ?></span>
 
             <img src="images/notebook.jpg" id="noteBookImage">
-
-            <span id="helpMessage"></span>
         </aside>
         <section>
                 <form action="addpost.php" method="post" id="addPostForm" name="mainForm">
@@ -61,6 +59,7 @@ $session = new Session();
                     <label for="content" class="labelAbove">Text to Upload</label>
                     <span class="hoverHelp" id="helpTextUpload">?</span>
                     <textarea name="content" class="textarea" id="content" cols=""></textarea>
+                    <span id="helpMessage"></span>
 
                     <label for="description" class="labelAbove">Description *</label>
                     <span class="hoverHelp" id="helpDescription">?</span>

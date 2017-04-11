@@ -74,15 +74,14 @@
 
 #helpMessage {
     font-size: 17px;
-
+    background-color: white;
     border: thin solid #E25D33;
 
     padding: 8px;
-
     width: 145px;
 
-    margin-top: 27px;
-    margin-left: 8px;
+    margin-left: 35%;
+    top: 20%;
 
     position: absolute;
     /* So that it doesn't show at the start - JS uses it later */
