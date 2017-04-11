@@ -5,8 +5,10 @@ $(document).ready(function(){
     var fieldMessage;
     var initString = '<span id="helpBoxQ" class="hoverHelp">?</span>';
 
+    // hide message element so it doesn't flash as page loads
     $('#helpMessage').hide();
 
+    // when hover over question mark element, display help message
     $('.hoverHelp').mouseover(function () {
 
         // This needs setting as initially set as display: none;
@@ -28,6 +30,7 @@ $(document).ready(function(){
         }
     });
 
+    // remove message when user moves mouse off element
     $('.hoverHelp').mouseleave(function () {
         $('#helpMessage').hide();
     });

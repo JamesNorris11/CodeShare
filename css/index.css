@@ -75,32 +75,16 @@
 #helpMessage {
     font-size: 17px;
     background-color: white;
-    border: thin solid #E25D33;
 
-    padding: 8px;
     width: 145px;
 
+    margin-top: initial;
     margin-left: 35%;
     top: 20%;
-
-    position: absolute;
-    /* So that it doesn't show at the start - JS uses it later */
-    display: none;
 }
 
 .hoverHelp {
-    color: #e25d33;
-    font-weight: bold;
-    text-align: center;
-
-    border-radius: 1ex;
-    border: 2px solid #e25d33;
     margin-left: 6px;
-
-    line-height: 1;
-    display: inline-block;
-    width: 1.8ex;
-    height: 1.85ex;
 }
 
 #helpBoxQ {

@@ -1,14 +1,9 @@
-label {
-    display: block;
-}
-
 main {
+    /* To stop horizontal scroll bar from displaying */
     height: calc(100% - 140px);
 }
 
 section {
-    /* This overwrites all.cs section attributes */
-    /* other overwrites included in this file */
     width: 40%;
     height: 40%;
 
@@ -16,6 +11,10 @@ section {
 
     float: right;
     position: relative;
+}
+
+label {
+    display: block;
 }
 
 .submit {
@@ -115,7 +114,7 @@ aside {
 }
 
 .imageCell {
-    padding: 4px 5px 0px 5px;
+    padding: 4px 5px 0 5px;
 }
 
 table, th, td {

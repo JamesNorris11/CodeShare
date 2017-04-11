@@ -6,6 +6,7 @@ $(document).ready(function(){
     var fieldName;
 
 
+    // When the "update button is pressed", this displays the form to change user details in the table
     $('#input').click(function(e) {
 
         $('#dispNameColValue').html(
@@ -47,44 +48,23 @@ $(document).ready(function(){
         $('#helpMessage').hide();
 
         if ($(this).attr('name') == "email") {
-            fieldName = "Email";
-
-            correctSyntax = emailCorrect();
-
-            changeTipMessage($(this), correctSyntax, fieldName);
+            changeFieldTipMessage($(this), emailCorrect(), "Email");
         }
         else if ($(this).attr('name') == "displayName") {
-            fieldName = "DisplayName";
-
-            correctSyntax = displayNameCorrect();
-
-            changeTipMessage($(this), correctSyntax, fieldName);
+            changeFieldTipMessage($(this), displayNameCorrect(), "DisplayName");
 
         }
         else if ($(this).attr('name') == "password") {
-
-            fieldName = "Password";
-
-            correctSyntax = passwordCorrect();
-
             // this is extra to update repeat password message when password field is changed
-            changeTipMessage(
-                $(
-                    'input[name=repeatPassword]')
-                , repeatPasswordCorrect()
-                , "RepeatPassword"
+            changeFieldTipMessage(
+                $('input[name=repeatPassword]'), repeatPasswordCorrect(), "RepeatPassword"
             );
 
-            changeTipMessage($(this), correctSyntax, fieldName);
+            changeFieldTipMessage($(this), passwordCorrect(), "Password");
 
         }
         else if ($(this).attr('name') == "repeatPassword") {
-
-            fieldName = "RepeatPassword";
-
-            correctSyntax = repeatPasswordCorrect();
-
-            changeTipMessage($(this), correctSyntax, fieldName);
+            changeFieldTipMessage($(this), repeatPasswordCorrect(), "RepeatPassword");
         }
 
     });
@@ -108,7 +88,7 @@ $(document).ready(function(){
         }
     });
 
-    function changeTipMessage(thisObj, correctSyntax, fieldName) {
+    function changeFieldTipMessage(thisObj, correctSyntax, fieldName) {
         if (fieldName) {
             if (correctSyntax == true) {
                 thisObj.css({"border": "1px solid #E25D33", "outline": "none"});
@@ -120,55 +100,4 @@ $(document).ready(function(){
             }
         }
     }
-
-    // @return true or false
-    function emailCorrect()
-    {
-        var len = $('input[name=email]').val().length;
-        if (len <= 100) {
-            var email = $('input[name=email]').val();
-            var re = /^\S+@\S+\.\S+$/;
-
-            return re.test(email);
-        }
-        else {
-            return false;
-        }
-    }
-
-    function displayNameCorrect()
-    {
-        var re = /^[a-zA-Z0-9 _]+$/;
-        var displayName = $('input[name=displayName]').val();
-
-        var len = $('input[name=displayName]').val().length;
-        if ((len <= 20) && (re.test(displayName))) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    function passwordCorrect()
-    {
-        var len = $('input[name=password]').val().length;
-        if ((len >= 6) && (len <= 100)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    function repeatPasswordCorrect()
-    {
-        if ($('input[name=repeatPassword]').val() == $('input[name=password]').val()) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
 });

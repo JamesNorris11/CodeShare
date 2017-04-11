@@ -1,6 +1,7 @@
 section {
-    /* This overwrites all.cs section attributes */
-    /* other overwrites included in this file */
+    /* This overwrites all.cs section attributes
+    other overwrites included in this file
+    all other CSS files do the same */
     width: 100%;
     margin-left: 0;
 }
@@ -29,8 +30,6 @@ section {
 
 #correctInfo {
     font-size: 20px;
-
-    margin-top: 80px;
 
     text-align: center;
 

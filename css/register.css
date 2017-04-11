@@ -3,8 +3,6 @@ label {
 }
 
 section {
-    /* This overwrites all.cs section attributes */
-    /* other overwrites included in this file */
     width: 100%;
     margin-left: 0;
 }
@@ -37,31 +35,5 @@ label {
 }
 
 .hoverHelp {
-    color: #e25d33;
-    font-weight: bold;
-    text-align: center;
-
-    border-radius: 1ex;
-    border: 2px solid #e25d33;
     margin-right: 10px;
-
-    line-height: 1;
-    display: inline-block;
-    width: 1.8ex;
-    height: 1.85ex;
-}
-
-#helpMessage {
-    border: thin solid #E25D33;
-
-    padding: 8px;
-
-    margin-top: 8px;
-    margin-left: 45px;
-
-    width: 300px;
-    position: absolute;
-
-    /* So that it doesn't show at the start - JS uses it later */
-    display: none;
 }
