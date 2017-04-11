@@ -193,6 +193,15 @@ section {
     display: none;
 }
 
+#incorrectInfo {
+    color: red;
+    font-size: 25px;
+
+    text-align: center;
+
+    display: block;
+}
+
 /* vietnamese */
 @font-face {
     font-family: 'Quicksand';

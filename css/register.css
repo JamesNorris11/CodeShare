@@ -37,3 +37,9 @@ label {
 .hoverHelp {
     margin-right: 10px;
 }
+
+#incorrectInfo {
+    text-align: left;
+
+    margin-bottom: 20px;
+}

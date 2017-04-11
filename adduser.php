@@ -1,38 +1,58 @@
 <?php
 
-require_once('CS.php');
-require_once('Session.php');
+    require_once('CS.php');
+    require_once('Session.php');
 
-$session = new Session();
+    $session = new Session();
 
-if ($session->get("loggedIn") == 1) {
-    header('Location: index.php');
-    exit;
-}
+    if ($session->get('loggedIn') == 1) {
+        header('Location: index.php');
+        exit;
+    }
 
-//if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['quantity']) {
-// if (is_int($_POST['quantity']) { $quantity= $_POST['quantity']; }
-//}
+    if ((!isset($_POST['email'])) || (!isset($_POST['password'])) || (!isset($_POST['displayName']))) {
+        header('Location: register.php');
+        exit;
+    }
 
-$email = $_POST['email'];
-$password =  password_hash($_POST['password'], PASSWORD_DEFAULT);
-$displayName = $_POST['displayName'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $displayName = $_POST['displayName'];
 
-// @TODO NEED TO CHECK IF EMAIL OR DISPLAY NAME ALREADY EXISTS!!!
-// @TODO SO MANY POTENTIAL ERRORS LIKE THE ONE ABOVE THAT NEED TO GIVE FEEDBACK TO THE USER!
+    // validate user input
+    if ((strlen($displayName) > 20) ||
+        (strlen($password) > 100) ||
+        (strlen($email) > 100) ||
+        (!preg_match('/^[a-zA-Z0-9 _]+$/', $displayName)) ||
+        (!preg_match('/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/', $email))
+        ) {
+        header('Location: index.php');
+        exit;
+    }
 
+    // check if email address is already registered
+    if (CS::checkFieldValueExists('Users', 'Email', $email)) {
+        header('Location: register.php?m=2');
+        exit;
+    }
 
-// @TODO display name can only be letters, numbers, underscores and spaces
-// @TODO stop displayname from just being loads of spaces and underscores, maybe just only one of each next to each other?
-if (strlen($displayName) > 20) {
-    // something
-}
+    // check if display name is already taken
+    if (CS::checkFieldValueExists('Users', 'DisplayName', $displayName)) {
+        header('Location: register.php?m=3');
+        exit;
+    }
 
-$newUser = new User($email, $password, $displayName);
-CS::addUser($newUser);
+    if ($password) {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+    }
 
-$session->set("loggedIn", 1);
-$session->set("userID", $newUser->getUserID());
+    // create new user object
+    $newUser = new User($email, $password, $displayName);
+    // add user to database
+    CS::addUser($newUser);
 
-header('Location: index.php?m=1');
-// @TODO should get welcome message when I've created an account!!
+    // create session to log user in
+    $session->set("loggedIn", 1);
+    $session->set("userID", $newUser->getUserID());
+
+    header('Location: index.php?m=1');

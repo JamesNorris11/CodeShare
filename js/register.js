@@ -3,6 +3,7 @@ $(document).ready(function(){
     var correctSyntax;
     var fieldName;
     var fieldMessage;
+    var initString = '<span id="helpBoxQ" class="hoverHelp">?</span>';
 
     $('#helpMessage').hide();
 
@@ -54,16 +55,16 @@ $(document).ready(function(){
         $('#helpMessage').show();
 
         if ($(this).attr('id') == "helpEmail") {
-            $('#helpMessage').text("This must be a valid email address. e.g. 123@abc.com");
+            $('#helpMessage').html(initString + 'This must be a valid email address. e.g. 123@abc.com');
         }
         else if ($(this).attr('id') == "helpDisplayName") {
-            $('#helpMessage').text("Your display name can be up to 20 characters long. It can only contain letters, numbers, underscores and spaces.");
+            $('#helpMessage').html(initString + 'Your display name can be up to 20 characters long. It can only contain letters, numbers, underscores and spaces.');
         }
         else if ($(this).attr('id') == "helpPassword") {
-            $('#helpMessage').text("Set a secure password. It must be at least 6 characters long. Do not make it too simple!");
+            $('#helpMessage').html(initString + 'Set a secure password. It must be at least 6 characters long. Do not make it too simple!');
         }
         else if ($(this).attr('id') == "helpRepeatPassword") {
-            $('#helpMessage').text("This must match the first password exactly. Make sure you type it carefully!");
+            $('#helpMessage').html(initString + 'This must match the first password exactly. Make sure you type it carefully!');
         }
     });
 

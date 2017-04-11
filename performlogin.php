@@ -1,10 +1,4 @@
 <?php
-    /**
-     * Created by PhpStorm.
-     * User: user
-     * Date: 05/04/2017
-     * Time: 14:19
-     */
 
     require_once('CS.php');
     require_once('Session.php');
@@ -16,15 +10,19 @@
         exit;
     }
 
-    //@TODO SO MUCH PHP USER INPUT VALIDATION NEEDS ADDING EVERYWHERE
-    //@TODO ADD JS THAT TELLS USER IF PW OR USERNAME IS WRONG
+    if ((!isset($_POST['email'])) || (!isset($_POST['password']))) {
+        header('Location: login.php');
+        exit;
+    }
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    if ((!$_POST['email']) || (!$_POST['password'])) {
+    if (!preg_match('/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/', $email)) {
         header('Location: login.php');
         exit;
     }
 
-    $userID = CS::performLogin($_POST['email'], $_POST['password']);
+    $userID = CS::performLogin($email, $password);
     if (!$userID) {
         header('Location: login.php?e=1');
         exit;

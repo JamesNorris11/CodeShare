@@ -27,15 +27,6 @@ label {
     margin-top: 16px;
 }
 
-#incorrectInfo {
-    color: red;
-    font-size: 25px;
-
-    text-align: center;
-
-    display: block;
-}
-
 .tip {
     margin-left: 20px;
 }

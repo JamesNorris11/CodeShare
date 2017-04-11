@@ -37,10 +37,18 @@ label {
     display: block;
 }
 
+#helpMessage {
+    text-align: left;
+}
+
 #submitDisplayName {
     margin-bottom: 50px;
 }
 
 #submitAll {
     margin-top: 15px;
+}
+
+#helpBoxQ {
+    margin: 0 7px;
 }

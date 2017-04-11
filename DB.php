@@ -26,7 +26,7 @@
  *  selectForgotPasswordCheck()
  *  updateUserField()
  *
- * createPostObject()
+ *  createPostObject()
  *
  *  selectTable()
  *  connect()
@@ -52,9 +52,8 @@ class DB
     {
         $this->dbCon = null;
     }
-    /*
-     * @param $post of type Post class
-     */
+
+    // @param $post of type Post class
     public function insertPost($post)
     {
 

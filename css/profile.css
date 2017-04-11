@@ -165,3 +165,19 @@ th, td {
     margin-bottom: 13px;
     margin-left: 7px;
 }
+
+#incorrectInfo {
+    font-size: 20px;
+
+    margin-bottom: 20px;
+}
+
+#correctInfo {
+    color: green;
+    font-size: 20px;
+
+    margin-bottom: 20px;
+    text-align: center;
+
+    display: block;
+}

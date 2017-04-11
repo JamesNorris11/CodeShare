@@ -2,8 +2,7 @@
 
 /**
  * cs stands for CodeShare
- * Created by PhpStorm.
- * User: user
+ * Created by James Norris
  * Date: 10/03/2017
  * Time: 17:38
  */
@@ -11,45 +10,6 @@ require_once('DB.php');
 
 class CS
 {
-    public static function addPost($post)
-    {
-        // @TODO DO I NEED TO HAVE THIS LINE AGAIN? WHEN DO I NEED new db()?? Could make non static and have class variable of $DB?
-        $DB = new DB('Posts');
-        $DB->insertPost($post);
-    }
-
-    public static function getPost($postID)
-    {
-        // @TODO DO I NEED TO HAVE THIS LINE AGAIN? WHEN DO I NEED new db()?? Could make non static and have class variable of $DB?
-        $DB = new DB('Posts');
-        return $DB->selectPost($postID);
-    }
-
-    public static function addUser($user)
-    {
-        $DB = new DB('Users');
-        $DB->insertUser($user);
-    }
-
-    public static function getUser($userID)
-    {
-        $DB = new DB('Users');
-        return $DB->selectUser($userID);
-    }
-
-    // @return true or false
-    public static function displayNameExists($displayName) {
-        $DB = new DB('Users');
-        return $DB->selectDisplayNameExists($displayName);
-    }
-
-    // @return array of Post objects
-    public static function getUserPosts($userID)
-    {
-        $DB = new DB('Posts');
-        return $DB->selectUserPosts($userID);
-    }
-
     // @return array with two elements [Posts => #, Users => #]
     public static function getStats()
     {
@@ -113,7 +73,8 @@ class CS
     }
 
     // @return userID if successful, null if not
-    public static function performLogin($email, $password) {
+    public static function performLogin($email, $password)
+    {
         $DB = new DB('Users');
         $user = $DB->selectUserByEmail($email);
         if (($user == null) || ($user->getPassword() == null)) {
@@ -126,28 +87,52 @@ class CS
     }
 
     // @return sets time and random string for user's forgotten password request
-    public static function setForgotPassword($email , $forgotString) {
+    public static function setForgotPassword($email, $forgotString)
+    {
         $DB = new DB('Users');
         $DB->updateForgotPassword($email , $forgotString);
     }
 
     // @return user object
-    public static function checkForgotString($code) {
+    public static function checkForgotString($code)
+    {
         $DB = new DB('Users');
         return $DB->selectForgotPasswordCheck($code);
     }
 
-    public static function setUserField($userID, $field, $password) {
+    public static function setUserField($userID, $field, $password)
+    {
         $DB = new DB('Users');
         $DB->updateUserField($userID, $field, $password);
     }
-
-
-    public static function registerUser()
+    public static function addPost($post)
     {
-        // @TODO maybe methods should be more overall like this - and then things like addUser in DB or somewhere else?
-        // this function would then do other stuff as well as calling addUser() method
+        $DB = new DB('Posts');
+        $DB->insertPost($post);
+    }
 
-        // @TODO DO I NEED THIS FUNCTION?
+    public static function getPost($postID)
+    {
+        $DB = new DB('Posts');
+        return $DB->selectPost($postID);
+    }
+
+    public static function addUser($user)
+    {
+        $DB = new DB('Users');
+        $DB->insertUser($user);
+    }
+
+    public static function getUser($userID)
+    {
+        $DB = new DB('Users');
+        return $DB->selectUser($userID);
+    }
+
+    // @return array of Post objects
+    public static function getUserPosts($userID)
+    {
+        $DB = new DB('Posts');
+        return $DB->selectUserPosts($userID);
     }
 }

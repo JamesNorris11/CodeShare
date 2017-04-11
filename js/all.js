@@ -30,6 +30,7 @@ function emailCorrect()
     }
 }
 
+// @return true or false
 function displayNameCorrect()
 {
     var re = /^[a-zA-Z0-9 _]+$/;
@@ -44,10 +45,14 @@ function displayNameCorrect()
     }
 }
 
-function passwordCorrect()
+// @return true or false
+function passwordCorrect(minPassLength)
 {
+    // if no parameter provided then set minimum password length to 6
+    if (typeof(minPassLength) === 'undefined') minPassLength = 6;
+
     var len = $('input[name=password]').val().length;
-    if ((len >= 6) && (len <= 100)) {
+    if ((len >= minPassLength) && (len <= 100)) {
         return true;
     }
     else {
@@ -55,6 +60,7 @@ function passwordCorrect()
     }
 }
 
+// @return true or false
 function repeatPasswordCorrect()
 {
     if ($('input[name=repeatPassword]').val() == $('input[name=password]').val()) {

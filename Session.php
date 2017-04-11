@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: user
+ * Created by James Norris
  * Date: 04/04/2017
  * Time: 15:17
  */
@@ -41,5 +40,4 @@ class Session
     public function postAccess($postID) {
         return (in_array($postID, $_SESSION['posts']) ? true : false);
     }
-
 }

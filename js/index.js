@@ -20,7 +20,7 @@ $(document).ready(function(){
             $('#helpMessage').html(initString + 'Enter text here that you would like to upload. This could be program code or any other type of text.');
         }
         else if ($(this).attr('id') == "helpDescription") {
-            $('#helpMessage').html(initString + 'Enter a description of your post here. This field is optional.');
+            $('#helpMessage').html(initString + 'Enter a description of your post here. It can be up to 150 characters long. This field is optional.');
         }
         else if ($(this).attr('id') == "helpPassword") {
             $('#helpMessage').html(initString + 'Enter a password for your post, allowing you to choose who can view your post by giving selected people the password. This field is optional.');

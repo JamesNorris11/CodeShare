@@ -91,6 +91,8 @@ test other languages to make sure syntax highlighting works
 
 invisible google reCaptcha
 
+check if email/displayname already exists
+
 talk about not using cookies, just used sessions
 
 /* temp notes
@@ -116,3 +118,13 @@ realised that /[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+/ needed to become
 /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/
 
 jquery fields error not going away when using google chrome autofill - talk about problems like this
+
+Not done:
+Email validation system
+cookies for login
+captcha system
+limit posts per page
+mobile/different size responsive page
+
+
+try and put syntax highlighting in document

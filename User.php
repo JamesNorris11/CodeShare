@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: user
+ * Created by James Norris
  * Date: 18/03/2017
  * Time: 15:31
  */
@@ -77,6 +76,7 @@ class User
     }
 
     private function createID() {
+        // creates random ID from first 9 characters of MD5 string of random number
         return substr(md5(rand()), 0, 9);
     }
 }

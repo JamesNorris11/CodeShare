@@ -21,12 +21,14 @@ $(document).ready(function(){
         else if ($(this).attr('name') == "password") {
             fieldMessage = "Please enter a valid password";
 
-            changeTipMessage($(this), passwordCorrect(), "Password", fieldMessage);
+            // set min password length to 1 as parameter, because no need to tell user how long password
+            // should be, as they should already have login details
+            changeTipMessage($(this), passwordCorrect(1), "Password", fieldMessage);
         }
     });
 
     $('.submit').click(function(e) {
-        if ((!emailCorrect()) || (!passwordCorrect())) {
+        if ((!emailCorrect()) || (!passwordCorrect(1))) {
             e.preventDefault()
         }
     });

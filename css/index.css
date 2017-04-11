@@ -73,10 +73,9 @@
 }
 
 #helpMessage {
-    font-size: 17px;
     background-color: white;
 
-    width: 145px;
+    width: 200px;
 
     margin-top: initial;
     margin-left: 35%;
@@ -88,7 +87,7 @@
 }
 
 #helpBoxQ {
-    margin: 0 5px;
+    margin: 0 7px;
 }
 
 .marginLabel {

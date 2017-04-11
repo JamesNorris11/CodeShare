@@ -1,19 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: James Norris
- * Date: 20/03/2017
- * Time: 14:47
- */
+    require_once('Session.php');
 
-require_once('Session.php');
+    $session = new Session();
 
-$session = new Session();
-
-if ($session->get("loggedIn") == 1) {
-    header('Location: index.php');
-    exit;
-}
+    if ($session->get("loggedIn") == 1) {
+        header('Location: index.php');
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

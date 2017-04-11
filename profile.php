@@ -1,23 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: James Norris
- * Date: 20/03/2017
- * Time: 14:47
- */
+    require_once('CS.php');
+    require_once('Session.php');
 
-require_once('CS.php');
-require_once('Session.php');
+    $session = new Session();
 
-$session = new Session();
+    if ($session->get("loggedIn") != 1) {
+        header('Location: index.php');
+        exit;
+    }
+    else {
+        $userID = $session->get("userID");
+    }
 
-if ($session->get("loggedIn") != 1) {
-    header('Location: index.php');
-    exit;
-}
-else {
-    $userID = $session->get("userID");
-}
+    if (!$userID) {
+        header('Location: index.php');
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +44,18 @@ else {
     <aside>
         <div id="userInfoArea">
             <span class="titlePhraseSmall">User Info</span>
-
+            <?php
+            $m = $_GET['m'];
+            if ($m) {
+                if ($m == 1) {
+                    echo '<span id="incorrectInfo">That display name has already been taken!</span>';
+                } else if ($m == 2) {
+                    echo '<span id="incorrectInfo">That email address has already been registered!</span>';
+                } else if ($m == 3) {
+                    echo '<span id="correctInfo">Your password has been updated!</span>';
+                }
+            }
+            ?>
             <table class="userTable userInfoTable">
             <?php
                 // Get user details

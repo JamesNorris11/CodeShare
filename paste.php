@@ -1,37 +1,35 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: James Norris
- * Date: 20/03/2017
- * Time: 14:47
- */
+    require_once('CS.php');
+    require_once('geshi/geshi.php');
+    require_once('Session.php');
 
-require_once('CS.php');
-require_once('geshi/geshi.php');
-require_once('Session.php');
+    $session = new Session();
 
-$session = new Session();
-
-if (!$_GET['id']) {
-    header('Location: index.php');
-    exit;
-}
-
-// Get contents of post
-$post = CS::getPost($_GET['id']);
-
-if (!$post) {
-    header('Location: index.php');
-    exit;
-}
-
-// check if user entered post password correctly if there was one
-if (($_POST['password']) && ($post->getPassword())) {
-    if (password_verify($_POST['password'], $post->getPassword())) {
-        $session->addPostAccess($post->getPostID());
+    if (!$_GET['id']) {
+        header('Location: index.php');
+        exit;
     }
-}
+    $postID = $_GET['id'];
 
+    if (!preg_match('/^[a-zA-Z0-9]+$/', $postID)) {
+        header('Location: index.php');
+        exit;
+    }
+
+    // Get contents of post
+    $post = CS::getPost($postID);
+
+    if (!$post) {
+        header('Location: index.php');
+        exit;
+    }
+
+    // check if user entered post password correctly if there was one
+    if (($_POST['password']) && ($post->getPassword())) {
+        if (password_verify($_POST['password'], $post->getPassword())) {
+            $session->addPostAccess($post->getPostID());
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

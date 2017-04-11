@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: James Norris
- * Date: 20/03/2017
- * Time: 14:47
- */
+    require_once('CS.php');
+    require_once('Session.php');
 
-require_once('CS.php');
-require_once('Session.php');
-
-$session = new Session();
+    $session = new Session();
 ?>
 <!DOCTYPE html>
 <html lang="en">

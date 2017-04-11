@@ -1,54 +1,48 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: James Norris
- * Date: 20/03/2017
- * Time: 14:47
- */
+    require_once('CS.php');
+    require_once('Session.php');
 
-require_once('CS.php');
-require_once('Session.php');
+    $session = new Session();
 
-$session = new Session();
+    if ($session->get("loggedIn") == 1) {
+        header('Location: index.php');
+        exit;
+    }
 
-if ($session->get("loggedIn") == 1) {
-    header('Location: index.php');
-    exit;
-}
+    // These if statement checks:
+    // 1) Code (POST var) exists, 2) Code is in the right format
+    // 3) user is found with this forgot code 4) the forgot password request was made within the last 20 minutes
+    $offerChangePassword = null;
+    if ($_GET['code']) {
+        $code = $_GET['code'];
+        if (preg_match('/^[a-zA-Z0-9]+$/', $code)) {
+            $forgotUser = CS::checkForgotString($code);
+            if ($forgotUser['user']) {
+                if ((time() - $forgotUser['time']) < 1200) {
+                    $offerChangePassword = 1;
 
-// These if statement checks:
-// 1) Code exists, 2) Code is in the right format
-// 3) user is found with this forgot code 4) the forgot password request was made within the last 20 minutes
-$offerChangePassword = null;
-if ($_GET['code']) {
-    $code = $_GET['code'];
-    if (preg_match('/^[a-zA-Z0-9]+$/', $code)) {
-        $forgotUser = CS::checkForgotString($code);
-        if ($forgotUser['user']) {
-            if ((time() - $forgotUser['time']) < 1200) {
-                $offerChangePassword = 1;
-
-                // If they have submitted a new password
-                if ($_POST['password']) {
-                    $password = $_POST['password'];
-                    if (strlen($password) >= 6) {
-                        $password = password_hash($password, PASSWORD_DEFAULT);
-                        CS::setUserField($forgotUser['user']->getUserID(), "Password", $password);
-                        $passwordChanged = true;
+                    // If they have submitted a new password
+                    if ($_POST['password']) {
+                        $password = $_POST['password'];
+                        // if password is 6 chars or over, hash password and then change it
+                        if (strlen($password) >= 6) {
+                            $password = password_hash($password, PASSWORD_DEFAULT);
+                            CS::setUserField($forgotUser['user']->getUserID(), "Password", $password);
+                            $passwordChanged = true;
+                        }
                     }
+                }
+                else {
+                    // time expired
+                    $offerChangePassword = 2;
                 }
             }
             else {
-                // time expired
-                $offerChangePassword = 2;
+                // incorrect code
+                $offerChangePassword = 3;
             }
         }
-        else {
-            // incorrect code
-            $offerChangePassword = 3;
-        }
     }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

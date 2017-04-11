@@ -1,30 +1,28 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: James Norris
- * Date: 20/03/2017
- * Time: 14:47
- */
+    require_once('CS.php');
+    require_once('Session.php');
 
-require_once('CS.php');
-require_once('Session.php');
+    $session = new Session();
 
-$session = new Session();
+    $arrayOfPosts = null;
 
-if ($_GET['d']) {
-    $arrayOfPosts = CS::getAllPostsByDescription($_GET['d']);
-}
-else if ($_GET['n']) {
-    $arrayOfPosts = CS::getAllPostsByDisplayName($_GET['n']);
-}
-else {
-    $arrayOfPosts = CS::getAllPosts();
-}
+    if ($_GET['d']) {
+        $arrayOfPosts = CS::getAllPostsByDescription($_GET['d']);
+    }
+    else if ($_GET['n']) {
+        $name = $_GET['n'];
+        if (preg_match('/^[a-zA-Z0-9 _]+$/', $name)) {
+            $arrayOfPosts = CS::getAllPostsByDisplayName($name);
+        }
+    }
+    else {
+        $arrayOfPosts = CS::getAllPosts();
+    }
 
-if (!$arrayOfPosts) {
-    header('Location: search.php?e=1');
-    exit;
-}
+    if (!$arrayOfPosts) {
+        header('Location: search.php?e=1');
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

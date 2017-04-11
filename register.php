@@ -1,19 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: James Norris
- * Date: 20/03/2017
- * Time: 14:47
- */
+    require_once('Session.php');
 
-require_once('Session.php');
+    $session = new Session();
 
-$session = new Session();
-
-if ($session->get("loggedIn") == 1) {
-    header('Location: index.php');
-    exit;
-}
+    if ($session->get("loggedIn") == 1) {
+        header('Location: index.php');
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +37,16 @@ if ($session->get("loggedIn") == 1) {
     <section>
         <span class="titlePhrase">Register</span>
         <form action="adduser.php" method="post" class="detailsForm" name="registerForm">
-
+            <?php
+            $m = $_GET['m'];
+            if ($m) {
+                if ($m == 2) {
+                    echo '<span id="incorrectInfo">That email address has already been registered!</span>';
+                } else if ($m == 3) {
+                    echo '<span id="incorrectInfo">That display name has already been taken!</span>';
+                }
+            }
+            ?>
             <div>
                 <label for="email">Email</label>
                 <input name="email" type="text" class="input field">
