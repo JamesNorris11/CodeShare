@@ -21,7 +21,7 @@ function emailCorrect()
     var len = $('input[name=email]').val().length;
     if (len <= 100) {
         var email = $('input[name=email]').val();
-        var re = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/;
+        var re = /^[a-zA-Z0-9_\.-]+@[a-zA-Z0-9_\.-]+\.[a-zA-Z0-9_\.-]+$/;
 
         return re.test(email);
     }

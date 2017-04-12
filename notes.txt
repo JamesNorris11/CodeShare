@@ -114,8 +114,8 @@ write about test function testMail()
 
 tested ";hello@ok.com"
 
-realised that /[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+/ needed to become
-/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/
+realised that /[a-zA-Z0-9_\.-]+@[a-zA-Z0-9_\.-]+\.[a-zA-Z0-9_\.-]+/ needed to become
+/^[a-zA-Z0-9_\.-]+@[a-zA-Z0-9_\.-]+\.[a-zA-Z0-9_\.-]+$/
 
 jquery fields error not going away when using google chrome autofill - talk about problems like this
 

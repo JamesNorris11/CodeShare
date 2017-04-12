@@ -17,7 +17,7 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if (!preg_match('/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/', $email)) {
+    if (!preg_match('/^[a-zA-Z0-9_\.-]+@[a-zA-Z0-9_\.-]+\.[a-zA-Z0-9_\.-]+$/', $email)) {
         header('Location: login.php');
         exit;
     }

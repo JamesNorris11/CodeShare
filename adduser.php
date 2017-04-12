@@ -24,7 +24,7 @@
         (strlen($password) > 100) ||
         (strlen($email) > 100) ||
         (!preg_match('/^[a-zA-Z0-9 _]+$/', $displayName)) ||
-        (!preg_match('/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/', $email))
+        (!preg_match('/^[a-zA-Z0-9_\.-]+@[a-zA-Z0-9_\.-]+\.[a-zA-Z0-9_\.-]+$/', $email))
         ) {
         header('Location: index.php');
         exit;

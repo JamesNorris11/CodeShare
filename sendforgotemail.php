@@ -33,7 +33,7 @@
 
     function validMail($email)
     {
-        return preg_match('/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$/', $email);
+        return preg_match('/^[a-zA-Z0-9_\.-]+@[a-zA-Z0-9_\.-]+\.[a-zA-Z0-9_\.-]+$/', $email);
     }
 
     function sendEmail($email, $randString)
@@ -63,7 +63,7 @@
 
     function testMail() {
         $arr = array("hello@ok.com", "really", ";hello@ok.com", "@ok.com", "ok.com", "rofl_cake@ok", "rofl_cake@ok.com"
-        ,"really_ok@ok_.com", "@f", "4344@323.com", "r&@g.c");
+        ,"really_ok@ok_.com", "@f", "4344@323.com", "r&@g.c", "hello.hello@hello.co");
         foreach ($arr as $a) {
             echo $a . " : " . (validMail($a) ? "Match" : "No Match") . "<br>\n";
         }
