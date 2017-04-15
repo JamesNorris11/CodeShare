@@ -128,3 +128,26 @@ mobile/different size responsive page
 
 
 try and put syntax highlighting in document
+
+further work:
+browser compatiblity
+
+TALK ABOUT USE OF JQUERY AND THAT IT'S NOT MINE - ABOUT USER FEEDBACK ON FORMS AND THAT'S WHY I USED IT
+
+
+THINGS IN INITIAL REQUIREMENTS THAT DIDN'T ADD:
+CAPTCHA SYSTEM
+COOKIES FOR LOGIN SYSTEM
+
+THING THAT IS FUTURE POSSIBILITY AS WASN'#T IN SCOPE IN FIRST PLACE AS TOO MUCH WORK:
+mobile/different size responsive page
+
+make sure headers for sections don't end up on different pages in document - final report
+
+future idea:
+post exposure (e.g. unlisted) and post expiration date
+SAY THAT SO MANY INFINITE IDEAS that I just had to include most important ones - so many many potential expansions.
+
+
+IS SOME OF THE INFORMATION TOO IMPORTANT IN APPENDIX? MIGHT IT BE MARKED
+ WITHOUT THIS? DO I NEED TO PUT IT IN THE MAIN DOCUMENT?
