@@ -48,23 +48,23 @@ $(document).ready(function(){
         $('#helpMessage').hide();
 
         if ($(this).attr('name') == "email") {
-            changeFieldTipMessage($(this), emailCorrect(), "Email");
+            changeBoxColour($(this), emailCorrect(), "Email");
         }
         else if ($(this).attr('name') == "displayName") {
-            changeFieldTipMessage($(this), displayNameCorrect(), "DisplayName");
+            changeBoxColour($(this), displayNameCorrect(), "DisplayName");
 
         }
         else if ($(this).attr('name') == "password") {
             // this is extra to update repeat password message when password field is changed
-            changeFieldTipMessage(
+            changeBoxColour(
                 $('input[name=repeatPassword]'), repeatPasswordCorrect(), "RepeatPassword"
             );
 
-            changeFieldTipMessage($(this), passwordCorrect(), "Password");
+            changeBoxColour($(this), passwordCorrect(), "Password");
 
         }
         else if ($(this).attr('name') == "repeatPassword") {
-            changeFieldTipMessage($(this), repeatPasswordCorrect(), "RepeatPassword");
+            changeBoxColour($(this), repeatPasswordCorrect(), "RepeatPassword");
         }
 
     });
@@ -88,7 +88,7 @@ $(document).ready(function(){
         }
     });
 
-    function changeFieldTipMessage(thisObj, correctSyntax, fieldName) {
+    function changeBoxColour(thisObj, correctSyntax, fieldName) {
         if (fieldName) {
             if (correctSyntax == true) {
                 thisObj.css({"border": "1px solid #E25D33", "outline": "none"});
