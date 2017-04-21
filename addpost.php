@@ -27,7 +27,7 @@
         $password = password_hash($password, PASSWORD_DEFAULT);
     }
 
-    // create new post
+    // Create new post
     $newPost = new Post($session->get('userID'), $language, $password, $description, $content);
     // add post to database
     CS::addPost($newPost);

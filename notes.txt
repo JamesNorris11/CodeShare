@@ -151,3 +151,27 @@ SAY THAT SO MANY INFINITE IDEAS that I just had to include most important ones -
 
 IS SOME OF THE INFORMATION TOO IMPORTANT IN APPENDIX? MIGHT IT BE MARKED
  WITHOUT THIS? DO I NEED TO PUT IT IN THE MAIN DOCUMENT?
+
+ make sure show JS clever stuff in images
+
+
+ talk about complexities of UserID -> display name
+ and that login is by email
+
+ GET DAD TO READ REPORT AND TELL ME IF IT REALLY SELLS MY PROJECT AS MUCH AS IT SHOULD
+
+ MAKE SURE SOMEWHERE TALK ABOUT REGULAR EXPRESSIONS
+
+ talk about sample data
+
+ security in implementation chapter - talk about input validation – give full list of things that I’m checking e.g. in adduser.php or addpost.php
+
+SECURITY - TALK ABOUT HOW NOT JUST JS VALIDATION AND WHY - THERE'S ALSO PHP VALIDATION
+
+security - talk about secdurity of dbConfig.php - about how PPH should be executed and not accessible by client - but can have errors where php doesn't
+run so need to protect from that
+
+Talk about "being directed" to pages like changedetails.php , the brtowser will be directed but they will never actually see it
+
+
+DID I COVER ALL SECURITY TOPICS???

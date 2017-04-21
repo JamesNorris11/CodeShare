@@ -26,7 +26,7 @@
  *  selectForgotPasswordCheck()
  *  updateUserField()
  *
- *  createPostObject()
+ *  createArrayOfPostObjects()
  *
  *  selectTable()
  *  connect()
@@ -194,7 +194,7 @@ class DB
                 return null;
             }
             else {
-                return $this->createPostObject($stmt);
+                return $this->createArrayOfPostObjects($stmt);
             }
         }
         catch(PDOException $E)
@@ -228,7 +228,7 @@ class DB
                 return null;
             }
             else {
-                return $this->createPostObject($stmt);
+                return $this->createArrayOfPostObjects($stmt);
             }
         }
         catch(PDOException $E)
@@ -252,7 +252,7 @@ class DB
                 return null;
             }
             else {
-                return $this->createPostObject($stmt);
+                return $this->createArrayOfPostObjects($stmt);
             }
         }
         catch(PDOException $E)
@@ -442,7 +442,7 @@ class DB
         }
     }
 
-    private function createPostObject($stmt)
+    private function createArrayOfPostObjects($stmt)
     {
         $posts = [];
 
